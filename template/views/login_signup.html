@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Testing out stuffs on jquery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../js/login_signup.js"></script>
+    <link rel="stylesheet" href="../css/login_signup.css">
+  </head>
+  <body>
+    <header>
+      <h1>PostIt</h1>
+      <h3>Please login or Signup to continue</h3>
+    </header>
+    <div class="main">
+      <div class="nav_container">
+        <button class="nav selected login">
+          Login
+        </button>
+        <button class="nav signup">
+          Register
+        </button>
+      </div>
+        <form method="post" action="#">
+          <input id="email" name="email" type="email" placeholder="email address" required>
+          <input id="password" name="password" type="password" placeholder="enter password" required>
+          <input id="password2" name="password2" type="password" placeholder="re-enter password" required>
+          <input id="submit" type="submit" value="Continue">
+        </form>
+        <button id="glogin">Google SignIn</button>
+      </div>
+    </div>
+    </div>
+  </body>
+</html>
