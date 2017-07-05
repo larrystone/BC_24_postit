@@ -1,0 +1,134 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0px;
+}
+
+body {
+  font-family: 'Titillium Web', sans-serif;
+}
+
+input, textarea, button {
+  font-size: 18px;
+  height: 100%;
+  /*padding: 5px 10px;*/
+  /*background-color: wheat;*/
+  color: lightseagreen; 
+}
+
+input:focus, textarea:focus {
+  outline: 0;
+}
+
+textarea {
+  border: 2px solid lightseagreen;
+  resize: vertical;
+}
+
+.field-wrap {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.top-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.top-row > div {
+  float: left;
+  width: 48%;
+  margin-right: 4%;
+}
+.top-row > div:last-child {
+  margin: 0;
+}
+
+.button {
+  border: 0;
+  outline: none;
+  border-radius: 0;
+  padding: 15px 0;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: lightseagreen;
+  color: #ffffff;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+}
+
+.button:hover, .button:focus {
+  background: lightseagreen;
+}
+
+.button-block {
+  width: 100%;
+}
+
+.right {
+  margin-top: -20px;
+  text-align: right;
+}
+
+footer {
+  width: 100%;
+  text-align: right;
+}
+
+/*mine starts here*/
+.clear {
+  clear: both;
+}
+
+ul {
+  list-style: none;
+}
+
+.header {
+  padding: 50px;
+  background-color: lightseagreen;
+  box-shadow: 0px 0px 3px 2px gray;
+  margin: 0px 0px 10px 0px;
+}
+
+h1, h2 {
+  text-align: center;
+  /*color: #ffffff;*/
+  font-weight: 300;
+  /*margin: 0 0 40px;*/
+}
+
+.posts {
+  width: 60%;
+}
+
+.groups, .users {
+  width: 20%;
+}
+
+.aside {
+  float: left;  
+  padding: 10px;
+}
+
+h5 {
+  text-align: right;
+  padding: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: gray;
+  -webkit-transition: .5s ease;
+  transition: .5s ease;
+}
+
+a:hover {
+  color: #179b77;
+}
+
+li {
+  margin: 5px;
+}

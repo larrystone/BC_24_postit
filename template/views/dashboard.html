@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>PostIt!</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+  </head>
+  <body>
+    <header>
+      <ul class="header">
+        <li class="aside">PostIt!</li>
+        <li class="aside">
+          <form action="/api/group" method="post">
+              <input name="group" id="group" placeholder="Enter a group name"/>
+              <button type="submit"> Create group</button>
+          </form>
+        </li>
+      </ul>
+      <h5>Welcome <em>*username*</em></h5>        
+    </header>
+
+    <section class="main">
+      <!--section for groups user belonogs to-->
+      <nav class="aside groups">
+        <h1>My Groups</h1>
+        <hr/>
+        <ul>
+          <li><a href="#">Javascript</a></li>
+          <li><a href="#">HTML</a></li>
+          <li><a href="#">jQuery</a></li>
+        </ul>
+      </nav>
+
+      <!--section for viewing and creating posts on group-->
+      <section class="aside posts">
+        <h1 id="group_name">*group_name*</h1>
+        <hr/>
+        <section>
+
+        </section>
+      </section>
+
+      <!--section for viewing and adding users to group-->
+      <nav class="aside users">
+        <h1>Users</h1>
+        <hr/>
+        <h5><a href="#">Add user</a></h5>
+        <ul>
+          <li>Shalom</li>
+          <li>Peace</li>
+          <li>AceHood</li>
+        </ul>
+      </nav>
+    </section>
+    
+    <!--scripts includes-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../js/home.js"></script>
+  </body>
+</html>
