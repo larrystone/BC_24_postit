@@ -94,9 +94,9 @@ a:hover {
 
 h1, h2 {
   text-align: center;
-  color: #ffffff;
+  color: lightblue;
   font-weight: 300;
-  margin: 0 0 40px;
+  margin: 0 0 20px;
 }
 
 h2 {
@@ -167,20 +167,6 @@ textarea {
   margin-bottom: 40px;
 }
 
-.top-row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.top-row > div {
-  float: left;
-  width: 48%;
-  margin-right: 4%;
-}
-.top-row > div:last-child {
-  margin: 0;
-}
-
 .button {
   border: 0;
   outline: none;
@@ -207,11 +193,6 @@ textarea {
 
 .right {
   margin-top: -20px;
-  text-align: right;
-}
-
-footer {
-  width: 100%;
   text-align: right;
 }
 

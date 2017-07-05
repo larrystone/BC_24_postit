@@ -11,7 +11,7 @@
         <li class="aside">PostIt!</li>
         <li class="aside">
           <form action="/api/group" method="post">
-              <input name="group" id="group" placeholder="Enter a group name"/>
+              <input name="group" id="group" placeholder="Enter a group name" required/>
               <button type="submit"> Create group</button>
           </form>
         </li>
@@ -42,7 +42,7 @@
 
       <!--section for viewing and adding users to group-->
       <nav class="aside users">
-        <h1>Users</h1>
+        <h1>*group_name* > Users</h1>
         <hr/>
         <h5><a href="#">Add user</a></h5>
         <ul>
