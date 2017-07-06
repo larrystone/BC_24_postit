@@ -1,4 +1,4 @@
-*, *:before, *:after {
+*, *:before, *:after, html {
   box-sizing: border-box;
   margin: 0px;
 }
@@ -10,7 +10,7 @@ body {
 input, textarea, button {
   font-size: 18px;
   height: 100%;
-  /*padding: 5px 10px;*/
+  padding: 5px 10px;
   /*background-color: wheat;*/
   color: lightseagreen; 
 }
@@ -22,25 +22,6 @@ input:focus, textarea:focus {
 textarea {
   border: 2px solid lightseagreen;
   resize: vertical;
-}
-
-.field-wrap {
-  position: relative;
-  margin-bottom: 40px;
-}
-
-.top-row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.top-row > div {
-  float: left;
-  width: 48%;
-  margin-right: 4%;
-}
-.top-row > div:last-child {
-  margin: 0;
 }
 
 .button {
@@ -67,17 +48,6 @@ textarea {
   width: 100%;
 }
 
-.right {
-  margin-top: -20px;
-  text-align: right;
-}
-
-footer {
-  width: 100%;
-  text-align: right;
-}
-
-/*mine starts here*/
 .clear {
   clear: both;
 }
@@ -87,7 +57,6 @@ ul {
 }
 
 .header {
-  padding: 50px;
   background-color: lightseagreen;
   box-shadow: 0px 0px 3px 2px gray;
   margin: 0px 0px 10px 0px;
@@ -95,9 +64,7 @@ ul {
 
 h1, h2 {
   text-align: center;
-  /*color: #ffffff;*/
   font-weight: 300;
-  /*margin: 0 0 40px;*/
 }
 
 .posts {
@@ -105,11 +72,16 @@ h1, h2 {
 }
 
 .groups, .users {
-  width: 20%;
+  width: 17%;
 }
 
 .aside {
   float: left;  
+  margin: 10px;
+}
+
+.haside {
+  display: inline-block;
   padding: 10px;
 }
 
@@ -131,4 +103,16 @@ a:hover {
 
 li {
   margin: 5px;
+}
+
+.availableusers {
+  display: none;
+}
+
+.createpost {
+  padding: 20px;
+}
+
+.done, .adduser {
+  cursor: pointer;
 }

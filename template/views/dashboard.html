@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="../css/dashboard.css">
   </head>
   <body>
-    <header>
-      <ul class="header">
-        <li class="aside">PostIt!</li>
-        <li class="aside">
+    <header class="header">
+      <ul>
+        <li class="haside">PostIt!</li>
+        <li class="haside">
           <form action="/api/group" method="post">
               <input name="group" id="group" placeholder="Enter a group name" required/>
               <button type="submit"> Create group</button>
@@ -20,10 +20,11 @@
     </header>
 
     <section class="main">
-      <!--section for groups user belonogs to-->
+      <!--section for groups user belongs to-->
       <nav class="aside groups">
         <h1>My Groups</h1>
         <hr/>
+        <!--<input id="filtergroup" name="group" placeholder="search group"/>-->
         <ul>
           <li><a href="#">Javascript</a></li>
           <li><a href="#">HTML</a></li>
@@ -36,7 +37,18 @@
         <h1 id="group_name">*group_name*</h1>
         <hr/>
         <section>
-
+          <div class="createpost">
+            <form>
+              <textarea placeholder="what do yo have to say?"></textarea>
+              <input type="submit" placeholder="PostIt!"/>
+            </form>
+          </div>
+          <ul class="posts">
+            <li class="post">Javascript is fun</li>
+            <li class="post">I wanna learn Javascript</li>
+            <li class="post">This is very good</li>
+            <li class="post">learning javascript via the easy way</li>
+          </ul>
         </section>
       </section>
 
@@ -44,17 +56,30 @@
       <nav class="aside users">
         <h1>*group_name* > Users</h1>
         <hr/>
-        <h5><a href="#">Add user</a></h5>
-        <ul>
-          <li>Shalom</li>
-          <li>Peace</li>
-          <li>AceHood</li>
-        </ul>
+        <!-- section that contains current users -->
+        <div class="currentusers">
+          <h5><a class="adduser">Add user</a></h5>
+          <ul>
+            <li>Shalom</li>
+            <li>Peace</li>
+            <li>AceHood</li>
+          </ul>
+        </div>
+
+        <!-- section that contains available users -->
+        <div class="availableusers">
+          <h5><a class="done">Done</a></h5>
+          <ul>
+            <li><a href="#">Rock</a></li>
+            <li><a href="#">Brandy</a></li>
+            <li><a href="#">lil berry</a></li>
+          </ul>
+        </div>
       </nav>
     </section>
     
     <!--scripts includes-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="../js/home.js"></script>
+    <script src="../js/dashboard.js"></script>
   </body>
 </html>
