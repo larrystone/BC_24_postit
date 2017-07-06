@@ -11,7 +11,6 @@ input, textarea, button {
   font-size: 18px;
   height: 100%;
   padding: 5px 10px;
-  /*background-color: wheat;*/
   color: lightseagreen; 
 }
 
@@ -19,10 +18,10 @@ input:focus, textarea:focus {
   outline: 0;
 }
 
-textarea {
+/*textarea {
   border: 2px solid lightseagreen;
   resize: vertical;
-}
+}*/
 
 .button {
   border: 0;
@@ -115,4 +114,43 @@ li {
 
 .done, .adduser {
   cursor: pointer;
+}
+
+.post-bkg {
+  background-color: white;
+  box-shadow: 0px 0px 2px 2px grey;
+  margin: 30px;
+  padding: 10px;
+  width: 90%;
+
+}
+
+.post-text {
+  color: black;  
+}
+
+.post-author {
+  font-size: 10px;
+  color: blue;
+  text-align: right;
+}
+
+.bkg_posts {
+  background-color: whitesmoke;
+  height: 100%;
+}
+
+.createpost {
+  width: 95%;
+  margin: 0px auto;
+}
+
+.createpost textarea {
+  width: 60%;
+}
+
+.createpost button {
+  width: 30%;
+  top: -15px;
+  position: relative;
 }

@@ -8,7 +8,7 @@
   <body>
     <header class="header">
       <ul>
-        <li class="haside">PostIt!</li>
+        <li class="haside"><h1>PostIt!</h1></li>
         <li class="haside">
           <form action="/api/group" method="post">
               <input name="group" id="group" placeholder="Enter a group name" required/>
@@ -36,19 +36,30 @@
       <section class="aside posts">
         <h1 id="group_name">*group_name*</h1>
         <hr/>
-        <section>
-          <div class="createpost">
-            <form>
+        <section class="bkg_posts">
+          <div>
+            <form class="createpost" action="/api/" method="post">
               <textarea placeholder="what do yo have to say?"></textarea>
-              <input type="submit" placeholder="PostIt!"/>
+              <button type="submit">PostIt!</button>
             </form>
           </div>
-          <ul class="posts">
-            <li class="post">Javascript is fun</li>
-            <li class="post">I wanna learn Javascript</li>
-            <li class="post">This is very good</li>
-            <li class="post">learning javascript via the easy way</li>
-          </ul>
+          <p>Recents posts (3 unread)</p>
+          <section id="posts">
+            <div class="post-bkg">
+              <p class="post-text">Javascript is fun!</p>
+              <p class="post-author">by Larrystone</p>
+            </div>
+            
+            <div class="post-bkg">
+              <p class="post-text">I wanna learn Javascript!</p>
+              <p class="post-author">by Larrystone</p>
+            </div>
+            
+            <div class="post-bkg">
+              <p class="post-text">The backend will surely make this app more fun!</p>
+              <p class="post-author">by Larrystone</p>
+            </div>
+          </section>
         </section>
       </section>
 
@@ -60,9 +71,9 @@
         <div class="currentusers">
           <h5><a class="adduser">Add user</a></h5>
           <ul>
-            <li>Shalom</li>
-            <li>Peace</li>
-            <li>AceHood</li>
+            <li class="user">Shalom</li>
+            <li class="user">Peace</li>
+            <li class="user">AceHood</li>
           </ul>
         </div>
 
@@ -70,9 +81,9 @@
         <div class="availableusers">
           <h5><a class="done">Done</a></h5>
           <ul>
-            <li><a href="#">Rock</a></li>
-            <li><a href="#">Brandy</a></li>
-            <li><a href="#">lil berry</a></li>
+            <li><a href="#" class="user addable">Rock</a></li>
+            <li><a href="#" class="user addable">Brandy</a></li>
+            <li><a href="#" class="user addable">lil berry</a></li>
           </ul>
         </div>
       </nav>
