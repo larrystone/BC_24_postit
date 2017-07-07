@@ -1,0 +1,39 @@
+{
+  "name": "postit",
+  "version": "1.0.0",
+  "description": "A message board app",
+  "main": "index.js",
+  "scripts": {
+    "build-task:scss-compile": "node-sass-chokidar --source-map true template/scss -o template/css",
+    "build-task:autoprefixer": "postcss template/css/*.css --use autoprefixer -d template/css",
+    "sass:build": "npm-run-all -p build-task:*",
+    "sass:watch": "chokidar 'template/scss/**/*.scss' -c 'npm run sass:build'",
+    "dev" : "npm-run-all -p sass:*",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lawal Lanre Emmanuel",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^7.1.2",
+    "chai": "^4.0.2",
+    "chokidar-cli": "^1.2.0",
+    "node-sass": "^4.5.3",
+    "nodemon": "^1.11.0",
+    "npm-run-all": "^4.0.2",
+    "postcss-cli": "^4.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.4.2",
+    "node-sass": "^4.5.3",
+    "node-sass-chokidar": "0.0.3",
+    "nodemon": "^1.11.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/larrystone/BC_24_postit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/larrystone/BC_24_postit/issues"
+  },
+  "homepage": "https://github.com/larrystone/BC_24_postit#readme"
+}
