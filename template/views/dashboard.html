@@ -2,60 +2,67 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script/ src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>PostIt!</title>
     <link rel="stylesheet" href="../css/dashboard.css">
   </head>
   <body>
-    <header class="header">
-      <ul>
-        <li class="haside"><h1>PostIt!</h1></li>
-        <li class="haside">
-          <form action="/api/group" method="post">
-              <input name="group" id="group" placeholder="Enter a group name" required/>
-              <button type="submit"> Create group</button>
-          </form>
-        </li>
-      </ul>
-      <h5>Welcome <em>*username*</em></h5>        
+    <header class="jumbotron text-center header">
+      <h2><span class="glyphicon glyphicon-edit"></span>&nbsp;PostIt!</h2>
+      <section>
+        <form action="/api/group" method="post">
+            <input class="btn" name="group" id="group" placeholder="Enter a group name" required/>
+            <button class="btn" type="submit"> Create group</button>
+        </form>
+      </section>
+      <h5 class="text-right"><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;<em>*username*</em></a></h5>        
     </header>
 
-    <section class="main">
+    <section class="row">
       <!--section for groups user belongs to-->
-      <nav class="aside groups">
-        <h1>My Groups</h1>
-        <hr/>
+      <nav class="col-sm-2">
+        <h3 class="underline">My Groups</h3>
         <!--<input id="filtergroup" name="group" placeholder="search group"/>-->
-        <ul>
-          <li><a href="#">Javascript</a></li>
-          <li><a href="#">HTML</a></li>
-          <li><a href="#">jQuery</a></li>
+        <ul class="list-unstyled">
+          <li class="padditem"><a href="#">Javascript</a></li>
+          <li class="padditem"><a href="#">HTML</a></li>
+          <li class="padditem"><a href="#">jQuery</a></li>
         </ul>
       </nav>
 
       <!--section for viewing and creating posts on group-->
-      <section class="aside posts">
-        <h1 id="group_name">*group_name*</h1>
-        <hr/>
+      <section class="col-sm-8">
+        <h3 id="group_name" class="underline">*group_name*</h3>
         <section class="bkg_posts">
           <div>
-            <form class="createpost" action="/api/" method="post">
-              <textarea placeholder="what do yo have to say?"></textarea>
-              <button type="submit">PostIt!</button>
+            <form class="well well-lg" action="/api/" method="post">
+              <textarea class="btn btn-block" placeholder="What say you to your group members?"></textarea>
+              <label class="down">Priority</label> 
+              <select class="down">
+                <option value="normal">Normal</option>
+                <option value="urgent">Urgent</option>
+                <option value="important">Important</option>
+              </select>
+              <button class="btn btn-default pull-right down" type="submit"><span class="glyphicon glyphicon-share-alt">&nbsp;PostIt!</span></button>
             </form>
           </div>
-          <p>Recents posts (3 unread)</p>
+          <p>Recents posts <span class="badge badge-new">2</span></p>
           <section id="posts">
-            <div class="post-bkg">
-              <p class="post-text">Javascript is fun!</p>
-              <p class="post-author">by Larrystone</p>
+            <div class="well well-sm">
+              <p class="post-text"><span class="glyphicon glyphicon-envelope"></span> Javascript is fun!</p>
+              <footer class="post-author">by Larrystone</footer>
             </div>
             
-            <div class="post-bkg">
-              <p class="post-text">I wanna learn Javascript!</p>
-              <p class="post-author">by Larrystone</p>
+            <div class="well well-sm">
+              <p class="">I wanna learn Javascript!</p>
+              <p class="text-right small">by Larrystone</p>
             </div>
             
-            <div class="post-bkg">
+            <div class="well well-sm">
               <p class="post-text">The backend will surely make this app more fun!</p>
               <p class="post-author">by Larrystone</p>
             </div>
@@ -64,33 +71,31 @@
       </section>
 
       <!--section for viewing and adding users to group-->
-      <nav class="aside users">
-        <h1>*group_name* > Users</h1>
-        <hr/>
+      <nav class="col-sm-2">
+        <h3 class="underline">Group Users</h3>
         <!-- section that contains current users -->
         <div class="currentusers">
           <h5><a class="adduser">Add user</a></h5>
-          <ul>
-            <li class="user">Shalom</li>
-            <li class="user">Peace</li>
-            <li class="user">AceHood</li>
+          <ul class="list-unstyled">
+            <li class="user"><span class="glyphicon glyphicon-user"></span>&nbsp;Shalom</li>
+            <li class="user"><span class="glyphicon glyphicon-user"></span>&nbsp;Peace</li>
+            <li class="user"><span class="glyphicon glyphicon-user"></span>&nbsp;AceHood</li>
           </ul>
         </div>
 
         <!-- section that contains available users -->
         <div class="availableusers">
           <h5><a class="done">Done</a></h5>
-          <ul>
-            <li><a href="#" class="user addable">Rock</a></li>
-            <li><a href="#" class="user addable">Brandy</a></li>
-            <li><a href="#" class="user addable">lil berry</a></li>
+          <ul class="list-unstyled">
+            <li><a href="#" class="user addable"><span class="glyphicon glyphicon-user"></span>&nbsp;Rock</a></li>
+            <li><a href="#" class="user addable"><span class="glyphicon glyphicon-user"></span>&nbsp;Brandy</a></li>
+            <li><a href="#" class="user addable"><span class="glyphicon glyphicon-user"></span>&nbsp;berry</a></li>
           </ul>
         </div>
       </nav>
     </section>
     
     <!--scripts includes-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="../js/dashboard.js"></script>
   </body>
 </html>

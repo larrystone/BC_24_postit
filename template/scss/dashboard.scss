@@ -1,165 +1,35 @@
-* {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  margin: 0px;
-  &:before, &:after {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    margin: 0px;
-  }
-}
-
-html {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  margin: 0px;
-}
-
 body {
   font-family: 'Titillium Web', sans-serif;
 }
 
-input, textarea, button {
-  font-size: 18px;
-  height: 100%;
-  padding: 5px 10px;
-  color: lightseagreen;
-}
-
-input:focus, textarea:focus {
-  outline: 0;
-}
-
-/*textarea {
-  border: 2px solid lightseagreen;
-  resize: vertical;
-}*/
-
-.button {
-  border: 0;
-  outline: none;
-  border-radius: 0;
-  padding: 15px 0;
-  font-size: 2rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  background: lightseagreen;
-  color: #ffffff;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  -webkit-appearance: none;
-  &:hover, &:focus {
-    background: lightseagreen;
-  }
-}
-
-.button-block {
-  width: 100%;
-}
-
-.clear {
-  clear: both;
-}
-
-ul {
-  list-style: none;
-}
-
 .header {
   background-color: lightseagreen;
-  -webkit-box-shadow: 0px 0px 3px 2px gray;
   box-shadow: 0px 0px 3px 2px gray;
-  margin: 0px 0px 10px 0px;
+  margin: 0px 0px 0px 0px;
 }
 
-h1, h2 {
-  text-align: center;
-  font-weight: 300;
-}
-
-.posts {
-  width: 60%;
-}
-
-.groups, .users {
-  width: 17%;
-}
-
-.aside {
-  float: left;
-  margin: 10px;
-}
-
-.haside {
-  display: inline-block;
-  padding: 10px;
-}
-
-h5 {
-  text-align: right;
+.underline {
   padding: 5px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid lightseagreen;
+}
+
+.padditem {
+  margin-left: 15px;
 }
 
 a {
+  color: darkturquoise;
+}
+
+a:hover {
   text-decoration: none;
-  color: gray;
-  -webkit-transition: .5s ease;
-  transition: .5s ease;
-  &:hover {
-    color: #179b77;
-  }
+}   
+
+.badge-new {
+  background-color: lightseagreen;
 }
 
-li {
-  margin: 5px;
-}
-
-.availableusers {
-  display: none;
-}
-
-.createpost {
-  padding: 20px;
-}
-
-.done, .adduser {
-  cursor: pointer;
-}
-
-.post-bkg {
-  background-color: white;
-  -webkit-box-shadow: 0px 0px 2px 2px grey;
-  box-shadow: 0px 0px 2px 2px grey;
-  margin: 30px;
-  padding: 10px;
-  width: 90%;
-}
-
-.post-text {
-  color: black;
-}
-
-.post-author {
-  font-size: 10px;
-  color: blue;
-  text-align: right;
-}
-
-.bkg_posts {
-  background-color: whitesmoke;
-  height: 100%;
-}
-
-.createpost {
-  width: 95%;
-  margin: 0px auto;
-  textarea {
-    width: 60%;
-  }
-  button {
-    width: 30%;
-    top: -15px;
-    position: relative;
-  }
+.down {
+  margin-top: 10px;
 }
