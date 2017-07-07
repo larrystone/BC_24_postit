@@ -2,16 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script/ src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>PostIt!</title>
     <link rel="stylesheet" href="../css/home.css">
   </head>
   <body>
-    <header class="header">
-      <h1>.... PostIt!</h1>
+    <header class="jumbotron text-center header nav navbar-fixed-top">
+      <h2><span class="glyphicon glyphicon-edit"></span>&nbsp;PostIt!</h2>
       <marquee><em>... post it and be kept posted !...</em></marquee>
     </header>
-    
-    <section class="box info">
+    <div class="main row">
+    <section class="box info col-xs-12 col-sm-6">
       <h2>What if you can create a network group?</h2>
       <h2>What if you can send a message to everyone on your network group?</h2>
       <h2>What if you can view messages posted on a network group you belong?</h2>
@@ -20,7 +24,7 @@
       <h1>Well.... Today is your lucky day ):</h1>
     </section>
 
-    <section class="box form">
+    <section class="box form col-xs-12 col-sm-5">
       <ul class="tab-group">
         <li class="tab active" href="#login">Log In</li>
         <li class="tab" href="#signup">Sign Up</li>        
@@ -48,7 +52,8 @@
 
             <p class="right"><a href="#">Forgot Password?</a></p>
 
-            <button class="button button-block" />Log In</button>
+            <!--Remove this id later--> 
+            <button id="submit" class="button button-block" />Log In</button>
 
           </form>
 
@@ -93,6 +98,7 @@
         </div>
       </div>
     </section>
+    </div>
     
     <!--scripts includes-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

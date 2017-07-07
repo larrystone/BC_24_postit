@@ -41,4 +41,10 @@ $(function () {
       $(this).text('show');
     }
   });
+
+  //remove this later
+  $("#submit").on('click', function(e) {
+    e.preventDefault();
+    window.location.href="dashboard.html";
+  });
 });

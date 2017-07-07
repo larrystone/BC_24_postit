@@ -6,6 +6,7 @@ body {
   background-color: lightseagreen;
   box-shadow: 0px 0px 3px 2px gray;
   margin: 0px 0px 0px 0px;
+  padding: 1px;
 }
 
 .underline {
@@ -14,12 +15,12 @@ body {
   border-bottom: 2px solid lightseagreen;
 }
 
-.padditem {
+.padd-item {
   margin-left: 15px;
 }
 
-a {
-  color: darkturquoise;
+a, .color-primary {
+  color: brown;
 }
 
 a:hover {
@@ -32,4 +33,18 @@ a:hover {
 
 .down {
   margin-top: 10px;
+}
+
+#availableusers {
+  display: none;
+}
+
+.item {
+  border-bottom: 1px solid #e0e0d1;
+}
+
+#posts {
+  height: 300px;
+  overflow-y: scroll;
+  padding: 5px;
 }

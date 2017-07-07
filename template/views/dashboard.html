@@ -2,11 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script/ src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script/ src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>PostIt!</title>
     <link rel="stylesheet" href="../css/dashboard.css">
   </head>
@@ -28,9 +27,9 @@
         <h3 class="underline">My Groups</h3>
         <!--<input id="filtergroup" name="group" placeholder="search group"/>-->
         <ul class="list-unstyled">
-          <li class="padditem"><a href="#">Javascript</a></li>
-          <li class="padditem"><a href="#">HTML</a></li>
-          <li class="padditem"><a href="#">jQuery</a></li>
+          <li class="item padd-item"><a href="#">Javascript</a></li>
+          <li class="item padd-item"><a href="#">HTML</a></li>
+          <li class="item padd-item"><a href="#">jQuery</a></li>
         </ul>
       </nav>
 
@@ -41,30 +40,36 @@
           <div>
             <form class="well well-lg" action="/api/" method="post">
               <textarea class="btn btn-block" placeholder="What say you to your group members?"></textarea>
-              <label class="down">Priority</label> 
-              <select class="down">
-                <option value="normal">Normal</option>
-                <option value="urgent">Urgent</option>
-                <option value="important">Important</option>
-              </select>
+              <div class="pull-left down dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Priority
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Normal</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Urgent</a></li>
+                  <li role="presentation" class="divider"></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Critical!</a></li>
+                </ul>
+              </div>
+
               <button class="btn btn-default pull-right down" type="submit"><span class="glyphicon glyphicon-share-alt">&nbsp;PostIt!</span></button>
             </form>
           </div>
+          <br/>
           <p>Recents posts <span class="badge badge-new">2</span></p>
           <section id="posts">
             <div class="well well-sm">
               <p class="post-text"><span class="glyphicon glyphicon-envelope"></span> Javascript is fun!</p>
-              <footer class="post-author">by Larrystone</footer>
+              <p class="text-right small color-primary">~ Larrystone</p>
             </div>
             
             <div class="well well-sm">
               <p class="">I wanna learn Javascript!</p>
-              <p class="text-right small">by Larrystone</p>
+              <p class="text-right small color-primary">~ Larrystone</p>
             </div>
             
             <div class="well well-sm">
-              <p class="post-text">The backend will surely make this app more fun!</p>
-              <p class="post-author">by Larrystone</p>
+              <p class="">The backend will surely make this app more fun!</p>
+              <p class="text-right small color-primary">~ Larrystone</p>
             </div>
           </section>
         </section>
@@ -74,22 +79,22 @@
       <nav class="col-sm-2">
         <h3 class="underline">Group Users</h3>
         <!-- section that contains current users -->
-        <div class="currentusers">
+        <div id="currentusers">
           <h5><a class="adduser">Add user</a></h5>
           <ul class="list-unstyled">
-            <li class="user"><span class="glyphicon glyphicon-user"></span>&nbsp;Shalom</li>
-            <li class="user"><span class="glyphicon glyphicon-user"></span>&nbsp;Peace</li>
-            <li class="user"><span class="glyphicon glyphicon-user"></span>&nbsp;AceHood</li>
+            <li class="item padd-item"><span class="glyphicon glyphicon-user"></span>&nbsp;Shalom</li>
+            <li class="item padd-item"><span class="glyphicon glyphicon-user"></span>&nbsp;Peace</li>
+            <li class="item padd-item"><span class="glyphicon glyphicon-user"></span>&nbsp;AceHood</li>
           </ul>
         </div>
 
         <!-- section that contains available users -->
-        <div class="availableusers">
+        <div id="availableusers">
           <h5><a class="done">Done</a></h5>
           <ul class="list-unstyled">
-            <li><a href="#" class="user addable"><span class="glyphicon glyphicon-user"></span>&nbsp;Rock</a></li>
-            <li><a href="#" class="user addable"><span class="glyphicon glyphicon-user"></span>&nbsp;Brandy</a></li>
-            <li><a href="#" class="user addable"><span class="glyphicon glyphicon-user"></span>&nbsp;berry</a></li>
+            <li class="item padd-item"><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;Rock</a></li>
+            <li class="item padd-item"><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;Brandy</a></li>
+            <li class="item padd-item"><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;berry</a></li>
           </ul>
         </div>
       </nav>

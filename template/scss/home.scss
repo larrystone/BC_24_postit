@@ -33,15 +33,9 @@ a {
 
 .box {
   padding: 40px;
-  width: 48%;
-  float: left;
-  margin: 40px 10px;
+  margin: 100px 10px;
   border-radius: 4px;
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
-}
-
-.info {
-  background-color: lightseagreen;
 }
 
 .tab-group {
@@ -104,7 +98,6 @@ h2 {
   font-weight: 300;
   margin: 0 0 20px;
   color: black;
-  margin: 0 0 20px;
 }
 
 label {
@@ -147,7 +140,6 @@ input, textarea {
   border: none;
   border-bottom: 1px solid #a0b3b0;
   border-radius: 10px;
-  /*color: lightseagreen; */
   -webkit-transition: border-color .25s ease, box-shadow .25s ease;
   transition: border-color .25s ease, box-shadow .25s ease;
 }
@@ -199,6 +191,12 @@ textarea {
   text-align: right;
 }
 
-.aside {
-  float: left;
+@keyframes infoanimation {
+    from {background-color: lightseagreen;}
+    to {background-color: whitesmoke;}
+}
+
+.info {
+  background-color: lightseagreen;
+  animation: infoanimation 5s linear 2s infinite alternate;
 }
