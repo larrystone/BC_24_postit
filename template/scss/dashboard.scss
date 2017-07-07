@@ -24,8 +24,8 @@ a, .color-primary {
   color: brown;
 }
 
-a:hover, a:active  {
-  text-decoration: none;
+a:hover, a:active, a:visited  {
+  text-decoration: none !important;
 }
 
 .badge-new {
