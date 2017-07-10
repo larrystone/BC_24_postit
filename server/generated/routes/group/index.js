@@ -8,20 +8,30 @@ var _creategroup = require('./creategroup');
 
 var _creategroup2 = _interopRequireDefault(_creategroup);
 
-var _signup = require('./signup');
+var _adduser = require('./adduser');
 
-var _signup2 = _interopRequireDefault(_signup);
+var _adduser2 = _interopRequireDefault(_adduser);
+
+var _postmessage = require('./postmessage');
+
+var _postmessage2 = _interopRequireDefault(_postmessage);
+
+var _getmessages = require('./getmessages');
+
+var _getmessages2 = _interopRequireDefault(_getmessages);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var user = _express2.default.Router();
+var group = _express2.default.Router();
 
-user.post('/', _creategroup2.default);
-user.post('/:groupid/user');
+group.post('/', _creategroup2.default);
+group.post('/:groupId/user', _adduser2.default);
+group.post('/:groupId/message', _postmessage2.default);
+group.get('/:groupId/messages', _getmessages2.default);
 
-user.post('/', function (req, res) {
+group.post('/*', function (req, res) {
   res.status(404).send('Invalid link');
 });
 
-module.exports = user;
+module.exports = group;
 //# sourceMappingURL=index.js.map

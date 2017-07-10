@@ -1,16 +1,19 @@
 import express from 'express';
 
 import createGroup from './creategroup';
+import addUser from './adduser';
+import postMessage from './postmessage';
+import getMessages from './getmessages';
 
-import signup from './signup';
+const group = express.Router();
 
-const user = express.Router();
+group.post('/', createGroup);
+group.post('/:groupId/user', addUser);
+group.post('/:groupId/message', postMessage);
+group.get('/:groupId/messages', getMessages);
 
-user.post('/', createGroup);
-user.post('/:groupid/user', )
-
-user.post('/', (req, res) => {
+group.post('/*', (req, res) => {
   res.status(404).send('Invalid link');
 });
 
-module.exports = user;
+module.exports = group;
