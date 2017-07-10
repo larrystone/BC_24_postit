@@ -1,26 +1,23 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    const query = queryInterface.createTable('users', {
+    const query = queryInterface.createTable('group', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      username: {
+      name: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      email: {
+      userid: {
         allowNull: false,
-        type: Sequelize.STRING
-      },
-      password: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      phone: {
         type: Sequelize.INTEGER
+      },
+      admin: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
       },
       createdAt: {
         allowNull: false,
@@ -35,7 +32,7 @@ module.exports = {
     return query;
   },
   down: (queryInterface, Sequelize) => {
-    const query = queryInterface.dropTable('users');
+    const query = queryInterface.dropTable('groups');
     return query;
   }
 };

@@ -14,8 +14,9 @@ module.exports = (sequelize, DataTypes) => {
           foreignKey: 'userId',
           as: 'groups',
         });
-      }
+      },
     }
   });
+
   return user;
 };
