@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    const query = queryInterface.createTable('group', {
+    const query = queryInterface.createTable('groups', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -12,8 +12,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       userid: {
-        allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'users',
+          key: 'id',
+          as: 'userId',
+        },
       },
       admin: {
         type: Sequelize.BOOLEAN,
@@ -31,7 +36,7 @@ module.exports = {
 
     return query;
   },
-  down: (queryInterface, Sequelize) => {
+  down: (queryInterface /* , Sequelize */) => {
     const query = queryInterface.dropTable('groups');
     return query;
   }
