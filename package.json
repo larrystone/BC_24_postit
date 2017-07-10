@@ -19,6 +19,7 @@
     "autoprefixer": "^7.1.2",
     "chai": "^4.0.2",
     "chokidar-cli": "^1.2.0",
+    "eslint": "^4.2.0",
     "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
