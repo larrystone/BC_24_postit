@@ -1,6 +1,5 @@
-import express from 'express';
-
 module.exports = (req, res) => {
-  //const models = data.models;
-  res.status(200).json({ message : "sign in" });
+  // fetch out the username and password and verify user
+  res.status(200).json(
+    { username: req.body.username, password: req.body.password });
 };

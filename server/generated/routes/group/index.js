@@ -4,9 +4,9 @@ var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
 
-var _signin = require('./signin');
+var _creategroup = require('./creategroup');
 
-var _signin2 = _interopRequireDefault(_signin);
+var _creategroup2 = _interopRequireDefault(_creategroup);
 
 var _signup = require('./signup');
 
@@ -16,8 +16,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var user = _express2.default.Router();
 
-user.post('/signin', _signin2.default);
-user.post('/signup', _signup2.default);
+user.post('/', _creategroup2.default);
+user.post('/:groupid/user');
 
 user.post('/', function (req, res) {
   res.status(404).send('Invalid link');

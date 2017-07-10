@@ -1,7 +1,7 @@
+import express from 'express';
+
 import user from './user';
 // import group from './group';
-
-import express from 'express';
 
 const routes = express.Router();
 
@@ -10,6 +10,10 @@ routes.use('/api/user', user);
 
 routes.get('/', (req, res) => {
   res.status(200).json({ message: 'Connected!' });
+});
+
+routes.get('*', (req, res) => {
+  res.status(404).send('invalid link');
 });
 
 module.exports = routes;

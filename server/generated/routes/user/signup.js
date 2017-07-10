@@ -1,13 +1,8 @@
 "use strict";
 
-var _express = require("express");
-
-var _express2 = _interopRequireDefault(_express);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 module.exports = function (req, res) {
-  //const models = data.models;
-  res.status(200).json({ message: "sign up" });
+  // fetch out the username email address and password, verify user
+
+  res.status(200).json({ username: req.body.username, email: req.body.email, password: req.body.password });
 };
 //# sourceMappingURL=signup.js.map
