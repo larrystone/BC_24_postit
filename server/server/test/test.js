@@ -1,5 +1,5 @@
-const supertest = require('supertest');
-const should = require('should');
+import supertest from 'supertest';
+import should from 'should';
 
 // This agent refers to PORT where program is runninng.
 const server = supertest.agent('http://localhost:3000');
