@@ -3,8 +3,13 @@ module.exports = (sequelize, DataTypes) => {
     content: { type: DataTypes.STRING,
       allowNull: false },
     read: { type: DataTypes.BOOLEAN,
-      defaultValue: false }
-  }, {
+      defaultValue: false },
+    priority: {
+      type: DataTypes.ENUM,
+      values: ['Normal', 'Urgent', 'Critical']
+    }
+  },
+  {
     classMethods: {
       associate: (models) => {
         message.belongsTo(models.user, {

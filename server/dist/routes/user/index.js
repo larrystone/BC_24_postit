@@ -4,20 +4,18 @@ var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
 
-var _signin = require('./signin');
+var _controllers = require('../../controllers');
 
-var _signin2 = _interopRequireDefault(_signin);
-
-var _signup = require('./signup');
-
-var _signup2 = _interopRequireDefault(_signup);
+var _controllers2 = _interopRequireDefault(_controllers);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var userController = _controllers2.default.users;
+
 var user = _express2.default.Router();
 
-user.post('/signin', _signin2.default);
-user.post('/signup', _signup2.default);
+user.post('/signin', userController.getUser);
+user.post('/signup', userController.createUser);
 
 user.post('/', function (req, res) {
   res.status(404).send('Invalid link');

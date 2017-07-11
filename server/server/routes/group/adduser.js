@@ -1,3 +1,7 @@
+import controller from '../../controllers';
+
+const userController = controller.users;
+
 module.exports = (req, res) => {
   // fetch the group id
   const groupId = req.params.groupId * 1;

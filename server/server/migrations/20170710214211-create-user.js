@@ -19,6 +19,20 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      // password_hasher: {
+      //   type: Sequelize.VIRTUAL,
+      //   set: (val) => {
+      //     this.setDataValue('password_hasher', val);
+      //     this.setDataValue('password', this.salt + val);
+      //   },
+      //   validate: {
+      //     isLongEnough: (val) => {
+      //       if (val.length < 7) {
+      //         throw new Error('Please choose a longer password');
+      //       }
+      //     }
+      //   }
+      // },
       phone: {
         type: Sequelize.INTEGER
       },

@@ -11,6 +11,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      priority: {
+        type: Sequelize.ENUM,
+        values: ['Normal', 'Urgent', 'Critical']
+      },
       userid: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
@@ -47,6 +51,7 @@ module.exports = {
   },
   down: (queryInterface /* , Sequelize */) => {
     const query = queryInterface.dropTable('messages');
+
     return query;
   }
 };
