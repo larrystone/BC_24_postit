@@ -1,12 +1,13 @@
 import express from 'express';
 
-import signin from './signin';
-import signup from './signup';
+import controller from '../../controllers';
+
+const userController = controller.users;
 
 const user = express.Router();
 
-user.post('/signin', signin);
-user.post('/signup', signup);
+user.post('/signin', userController.getUser);
+user.post('/signup', userController.createUser);
 
 user.post('/', (req, res) => {
   res.status(404).send('Invalid link');
