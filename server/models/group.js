@@ -9,9 +9,13 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: (models) => {
-        group.belongsTo(models.Todo, {
+        group.belongsTo(models.user, {
           foreignKey: 'userId',
           onDelete: 'CASCADE',
+        });
+        group.hasMany(models.message, {
+          foreignKey: 'groupId',
+          as: 'messages',
         });
       }
     }

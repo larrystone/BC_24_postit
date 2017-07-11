@@ -1,21 +1,23 @@
 {
   "development": {
-    "username": "andela",
-    "password": null,
+    "username": "postgres",
+    "password": "cyberstone",
     "database": "postit-dev",
     "host": "127.0.0.1",
+    "port": 5432,
     "dialect": "postgres"
   },
   "test": {
-    "username": "andela",
-    "password": null,
+    "username": "postgres",
+    "password": "cyberstone",
     "database": "database_test",
     "host": "127.0.0.1",
+    "port": 5432,
     "dialect": "postgres"
   },
   "production": {
-    "username": "andela",
-    "password": null,
+    "username": "postgres",
+    "password": "cyberstone",
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "postgres"
