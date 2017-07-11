@@ -12,6 +12,10 @@ var _bodyParser = require('body-parser');
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
+var _expressSession = require('express-session');
+
+var _expressSession2 = _interopRequireDefault(_expressSession);
+
 var _routes = require('./routes');
 
 var _routes2 = _interopRequireDefault(_routes);
@@ -24,6 +28,7 @@ var port = process.env.PORT || 3000;
 app.use((0, _morgan2.default)('dev'));
 app.use(_bodyParser2.default.json());
 app.use(_bodyParser2.default.urlencoded({ extended: false }));
+app.use((0, _expressSession2.default)({ secret: 'jsdydfvssvfs!_sf', resave: false, saveUnitialized: true }));
 
 //  Connect all our routes
 app.use('/', _routes2.default);

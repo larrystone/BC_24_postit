@@ -4,32 +4,28 @@ var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
 
-var _creategroup = require('./creategroup');
+var _controllers = require('../../controllers');
 
-var _creategroup2 = _interopRequireDefault(_creategroup);
-
-var _adduser = require('./adduser');
-
-var _adduser2 = _interopRequireDefault(_adduser);
-
-var _postmessage = require('./postmessage');
-
-var _postmessage2 = _interopRequireDefault(_postmessage);
-
-var _getmessages = require('./getmessages');
-
-var _getmessages2 = _interopRequireDefault(_getmessages);
+var _controllers2 = _interopRequireDefault(_controllers);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var group = _express2.default.Router();
+var groupController = _controllers2.default.groups;
 
-group.post('/', _creategroup2.default);
-group.post('/:groupId/user', _adduser2.default);
-group.post('/:groupId/message', _postmessage2.default);
-group.get('/:groupId/messages', _getmessages2.default);
+group.use('*', function (req, res, next) {
+  // check for authentication here
+  if (!req.session.user) {
+    res.status(401).send('Unauthorized Request');
+  }
 
-group.post('/*', function (req, res) {
+  next();
+});
+
+group.post('/', groupController.createGroup);
+group.post('/:groupId/user', groupController.addGroupUser);
+
+group.post('*', function (req, res) {
   res.status(404).send('Invalid link');
 });
 

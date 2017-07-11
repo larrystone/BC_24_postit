@@ -3,9 +3,11 @@
 module.exports = function (sequelize, DataTypes) {
   var user = sequelize.define('user', {
     username: { type: DataTypes.STRING,
-      allowNull: false },
+      allowNull: false,
+      unique: true },
     email: { type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       validate: {
         isEmail: true
       }
@@ -31,14 +33,12 @@ module.exports = function (sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function associate(models) {
-        user.hasMany(models.group, {
-          foreignKey: 'userId',
-          as: 'groups'
-        });
         user.hasMany(models.message, {
           foreignKey: 'userId',
           as: 'messages'
         });
+        user.hasMany(models.group_user, {
+          foreignKey: 'userId' });
       }
     }
   });

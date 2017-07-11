@@ -13,19 +13,19 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      userid: {
-        type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'users',
-          key: 'id',
-          as: 'userId'
-        }
-      },
-      admin: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false
-      },
+      // userid: {
+      //   type: Sequelize.INTEGER,
+      //   onDelete: 'CASCADE',
+      //   references: {
+      //     model: 'users',
+      //     key: 'id',
+      //     as: 'userId',
+      //   },
+      // },
+      // admin: {
+      //   type: Sequelize.BOOLEAN,
+      //   defaultValue: false
+      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

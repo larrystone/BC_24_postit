@@ -1,18 +1,23 @@
 import express from 'express';
 
-import createGroup from './creategroup';
-import addUser from './adduser';
-import postMessage from './postmessage';
-import getMessages from './getmessages';
+import controller from '../../controllers';
 
 const group = express.Router();
+const groupController = controller.groups;
 
-group.post('/', createGroup);
-group.post('/:groupId/user', addUser);
-group.post('/:groupId/message', postMessage);
-group.get('/:groupId/messages', getMessages);
+group.use('*', (req, res, next) => {
+  // check for authentication here
+  if (!req.session.user) {
+    res.status(401).send('Unauthorized Request');
+  }
 
-group.post('/*', (req, res) => {
+  next();
+});
+
+group.post('/', groupController.createGroup);
+group.post('/:groupId/user', groupController.addGroupUser);
+
+group.post('*', (req, res) => {
   res.status(404).send('Invalid link');
 });
 
