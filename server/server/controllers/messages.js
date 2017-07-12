@@ -1,21 +1,36 @@
 import models from '../models';
+import validate from './validate';
 
 const message = models.message;
 
+/**
+ * This ting foes thins
+ * @param {*} req
+ * @param {*} res
+ * @returns {*} newMessage
+ */
 module.exports.createMessage = (req, res) => {
-  const newMessage = message
-    .create({
-      content: req.body.content,
-      userid: req.session.user.id,
-      groupid: req.params.groupId,
-      priority: req.body.priority,
-    })
-    .then(result => res.status(201).send(result))
-    .catch(error => res.status(400).send({ title: 'Oops...',
-      message: 'Error Creating post. See log below for more info',
-      log: error }));
+  const groupId = req.params.groupId;
+  const userId = req.session.user.id;
 
-  return newMessage;
+  if (validate.isMember(userId, groupId) === true || validate.isMember(userId, groupId) === false) {
+    const newMessage = message
+      .create({
+        content: req.body.content,
+        userid: req.session.user.id,
+        groupid: req.params.groupId,
+        priority: req.body.priority,
+      })
+      .then(result => res.status(201).send(result))
+      .catch(error => res.status(400).send({ title: 'Oops...',
+        message: 'Error Creating post. See log below for more info',
+        log: error }));
+
+    return newMessage;
+  }
+  res.status(201).send({ title: 'Oops...',
+    message: `You do not seem to have 
+      the neccesary permission to post messages to this group` });
 };
 
 

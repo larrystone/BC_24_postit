@@ -33,10 +33,6 @@ module.exports = {
           as: 'groupId',
         },
       },
-      read: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
