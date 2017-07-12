@@ -16,7 +16,6 @@ module.exports.createUser = (req, res) => {
       const loggedInUser =
         { userId: result.id, username: result.username, email: result.email };
 
-      // TODO set session
       req.session.user = result;
 
       res.status(200).send(loggedInUser);
@@ -64,8 +63,6 @@ module.exports.getUser = (req, res) => {
 };
 
 
-
-
 // get all users on the users table
 module.exports.getAllUsers = (req, res) => {
   const newUser = user
@@ -85,6 +82,7 @@ module.exports.getAllUsers = (req, res) => {
 
   return newUser;
 };
+
 
 module.exports.logOut = (req, res) => {
   req.session.user = null;

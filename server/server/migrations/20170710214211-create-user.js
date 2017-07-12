@@ -24,6 +24,7 @@ module.exports = {
       phone: {
         type: Sequelize.STRING(11)
       },
+      last_login: Sequelize.DATE,
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
