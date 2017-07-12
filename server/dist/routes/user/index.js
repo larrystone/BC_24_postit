@@ -18,9 +18,8 @@ user.post('/signin', userController.getUser);
 user.post('/signup', userController.createUser);
 user.get('/signout', userController.logOut);
 
-user.post('/', function (req, res) {
-  res.status(404).send('Invalid link');
-});
+// get all logged in users
+user.get('/all', userController.getAllUsers);
 
 module.exports = user;
 //# sourceMappingURL=index.js.map

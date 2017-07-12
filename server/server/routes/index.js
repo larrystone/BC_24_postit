@@ -9,7 +9,7 @@ routes.use('/api/user', user);
 routes.use('/api/group', group);
 
 routes.get('/', (req, res) => {
-  res.status(200).json({ message: 'Connected!' });
+  res.status(200).json({ title: 'PostIt!...', message: 'Welcome Buddy...' });
 });
 
 routes.get('*', (req, res) => {

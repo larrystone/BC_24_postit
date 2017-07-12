@@ -20,7 +20,7 @@ routes.use('/api/user', _user2.default);
 routes.use('/api/group', _group2.default);
 
 routes.get('/', function (req, res) {
-  res.status(200).json({ message: 'Connected!' });
+  res.status(200).json({ title: 'PostIt!...', message: 'Welcome Buddy...' });
 });
 
 routes.get('*', function (req, res) {

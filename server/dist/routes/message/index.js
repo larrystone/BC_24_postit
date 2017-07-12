@@ -17,19 +17,15 @@ var message = _express2.default.Router();
 message.use('*', function (req, res, next) {
   // check for authentication here
   if (!req.session.user) {
-    res.status(401).send('Unauthorized Request');
+    res.status(401).send({ title: 'Oops..',
+      message: 'Sorry, You do not have the permission to view this page!' });
   }
 
   next();
 });
 
-message.post('/signin', messageController.getUser);
-message.post('/signup', messageController.createUser);
-message.get('/signout', messageController.logOut);
-
-message.post('/', function (req, res) {
-  res.status(404).send('Invalid link');
-});
+// message.post('/:groupId/message', messageController.);
+// message.get('/:groupId/messages', messageController.);
 
 module.exports = message;
 //# sourceMappingURL=index.js.map

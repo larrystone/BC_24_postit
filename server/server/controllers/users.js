@@ -73,7 +73,7 @@ module.exports.getAllUsers = (req, res) => {
     .then((result) => {
       if (!result) {
         return res.status(404).send({
-          message: 'No User Not Found',
+          message: 'No User Found',
         });
       }
 
@@ -86,6 +86,6 @@ module.exports.getAllUsers = (req, res) => {
 
 module.exports.logOut = (req, res) => {
   req.session.user = null;
-  res.status(200).send({ message: 'Thanks for using our app' });
+  res.status(200).send({ title: 'PostIt bids Goodbye...', message: 'Thanks for your time...' });
 };
 
