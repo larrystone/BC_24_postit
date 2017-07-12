@@ -19,17 +19,20 @@ module.exports.verifyHash = (password, hash) => {
 
 // module.exports.generateToken = (currentUser) => {
 //   const access = 'auth';
-//   const token = jwt.sign({ id: currentUser.id, access }, secret)
-//     .toString();
+//   const token = jwt.sign({ id: currentUser.id, access }, secret, {expiresIn: 24 * 60 * 60})
 //   return token;
 // };
 
+
 // module.exports.verifyToken = (token) => {
 //   let decoded;
+//   token = req.body.token || req.headers.x-auth;
 //   try {
-//     decoded = jwt.verify(token, secret)
+//     decoded = jwt.verify(token, secret, (err, decoded) => {
+//    return decoded
+//   })
 //   } catch (e) {
-
+//
 //   }
 
 //   return decoded;
