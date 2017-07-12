@@ -1,3 +1,8 @@
+[![Coverage Status](https://coveralls.io/repos/github/larrystone/BC_24_postit/badge.svg?branch=master)](https://coveralls.io/github/larrystone/BC_24_postit?branch=master)
+
+[![Build Status](https://www.travis-ci.org/larrystone/BC_24_postit.svg?branch=master)]
+(https://www.travis-ci.org/larrystone/BC_24_postit)
+
 # postIt
 A message board web app with great features...
 

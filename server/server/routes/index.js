@@ -1,15 +1,15 @@
 import express from 'express';
 
 import user from './user';
-import group from './group';
+import groupAndMessages from './group_messages';
 
 const routes = express.Router();
 
 routes.use('/api/user', user);
-routes.use('/api/group', group);
+routes.use('/api/group', groupAndMessages);
 
 routes.get('/', (req, res) => {
-  res.status(200).json({ message: 'Connected!' });
+  res.status(200).json({ title: 'PostIt!...', message: 'Welcome Buddy...' });
 });
 
 routes.get('*', (req, res) => {

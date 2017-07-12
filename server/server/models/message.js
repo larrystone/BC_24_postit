@@ -2,8 +2,8 @@ module.exports = (sequelize, DataTypes) => {
   const message = sequelize.define('message', {
     content: { type: DataTypes.STRING,
       allowNull: false },
-    read: { type: DataTypes.BOOLEAN,
-      defaultValue: false },
+    userid: DataTypes.INTEGER,
+    groupid: DataTypes.INTEGER,
     priority: {
       type: DataTypes.ENUM,
       values: ['Normal', 'Urgent', 'Critical']

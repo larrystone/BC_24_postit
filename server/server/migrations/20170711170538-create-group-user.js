@@ -1,25 +1,28 @@
-'use strict';
-
 module.exports = {
-  up: function up(queryInterface, Sequelize) {
-    var query = queryInterface.createTable('groups', {
+  up: (queryInterface, Sequelize) => {
+    const query = queryInterface.createTable('group_users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
       userid: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         onDelete: 'CASCADE',
         references: {
           model: 'users',
-          key: 'id',
-          as: 'userId'
+          key: 'id'
+        }
+      },
+      groupid: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'groups',
+          key: 'id'
         }
       },
       admin: {
@@ -38,9 +41,9 @@ module.exports = {
 
     return query;
   },
-  down: function down(queryInterface /* , Sequelize */) {
-    var query = queryInterface.dropTable('groups');
+  down(queryInterface /* , Sequelize*/) {
+    const query = queryInterface.dropTable('group_users');
+
     return query;
   }
 };
-//# sourceMappingURL=20170710222118-create-group.js.map

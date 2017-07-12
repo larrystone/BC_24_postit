@@ -9,20 +9,8 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING,
-        allowNull: false
-      },
-      userid: {
-        type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'users',
-          key: 'id',
-          as: 'userId',
-        },
-      },
-      admin: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false
+        allowNull: false,
+        unique: true
       },
       createdAt: {
         allowNull: false,
