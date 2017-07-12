@@ -6,10 +6,10 @@ var _models2 = _interopRequireDefault(_models);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var group = _models2.default.group;
+var message = _models2.default.message;
 
-module.exports.createGroup = function (req, res) {
-  var newGroup = group.create({
+module.exports.createmessage = function (req, res) {
+  var newmessage = message.create({
     name: req.body.name
   }).then(function (result) {
     return res.status(201).send(result);
@@ -17,11 +17,11 @@ module.exports.createGroup = function (req, res) {
     return res.status(400).send(error);
   });
 
-  return newGroup;
+  return newmessage;
 };
 
-module.exports.addGroupUser = function (req, res) {
-  var newGroup = group.create({
+module.exports.addmessageUser = function (req, res) {
+  var newmessage = message.create({
     userid: req.body.uid,
     name: req.body.name
   }).then(function (result) {
@@ -30,6 +30,6 @@ module.exports.addGroupUser = function (req, res) {
     return res.status(400).send(error);
   });
 
-  return newGroup;
+  return newmessage;
 };
 //# sourceMappingURL=messages.js.map

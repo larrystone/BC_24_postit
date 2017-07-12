@@ -15,21 +15,8 @@ module.exports = function (sequelize, DataTypes) {
     password: { type: DataTypes.STRING,
       allowNull: false
     },
-    password_hasher: {
-      type: DataTypes.VIRTUAL,
-      set: function set(val) {
-        undefined.setDataValue('password_hasher', val);
-        undefined.setDataValue('password', undefined.salt + val);
-      },
-      validate: {
-        isLongEnough: function isLongEnough(val) {
-          if (val.length < 7) {
-            throw new Error('Please choose a longer password');
-          }
-        }
-      }
-    },
-    phone: DataTypes.INTEGER
+    phone: DataTypes.INTEGER,
+    last_login: DataTypes.DATE
   }, {
     classMethods: {
       associate: function associate(models) {

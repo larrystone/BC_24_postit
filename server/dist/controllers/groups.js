@@ -20,7 +20,9 @@ module.exports.createGroup = function (req, res) {
     });
     res.status(201).send(result);
   }).catch(function (error) {
-    return res.status(400).send(error);
+    return res.status(400).send({ title: 'Oops...',
+      message: 'Error Creating group, \nmight be the group already exists. See log below for more info',
+      log: error });
   });
 
   return newGroup;
@@ -33,7 +35,9 @@ module.exports.addGroupUser = function (req, res) {
   }).then(function (result) {
     return res.status(201).send(result);
   }).catch(function (error) {
-    return res.status(400).send(error);
+    res.status(400).send({ title: 'Oops...',
+      message: 'Error adding User to group, \nmight be the user/group does not exist!. See log below for more info',
+      log: error });
   });
 
   return newGroupUser;

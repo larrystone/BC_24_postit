@@ -21,7 +21,9 @@ module.exports.createUser = (req, res) => {
 
       res.status(200).send(loggedInUser);
     })
-    .catch(error => res.status(400).send(error));
+    .catch(error => res.status(400).send({ title: 'Oops...',
+      message: 'Error Creating user. See log below for more info',
+      log: error }));
 
   return newUser;
 };
@@ -31,7 +33,7 @@ module.exports.createUser = (req, res) => {
 module.exports.getUser = (req, res) => {
   const newUser = user
     .findOne({
-      attributes: ['id', 'username', 'email', 'phone', 'password'],
+      attributes: ['id', 'username', 'email', 'password'],
       where: {
         $or: [
           { username: req.body.username.toLowerCase() },
@@ -86,6 +88,6 @@ module.exports.getAllUsers = (req, res) => {
 
 module.exports.logOut = (req, res) => {
   req.session.user = null;
-  res.status(200).send({ title: 'PostIt bids Goodbye...', message: 'Thanks for your time...' });
+  res.status(200).send({ title: 'PostIt bids Goodbye...',
+    message: 'Thanks for your time...' });
 };
-

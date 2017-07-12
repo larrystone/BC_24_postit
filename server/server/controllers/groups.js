@@ -16,7 +16,10 @@ module.exports.createGroup = (req, res) => {
       });
       res.status(201).send(result);
     })
-    .catch(error => res.status(400).send(error));
+    .catch(error => res.status(400).send({ title: 'Oops...',
+      message: `Error Creating group, 
+might be the group already exists. See log below for more info`,
+      log: error }));
 
   return newGroup;
 };
@@ -28,7 +31,12 @@ module.exports.addGroupUser = (req, res) => {
       userid: req.body.userid,
     })
     .then(result => res.status(201).send(result))
-    .catch(error => res.status(400).send(error));
+    .catch((error) => {
+      res.status(400).send({ title: 'Oops...',
+        message: `Error adding User to group, 
+might be the user/group does not exist!. See log below for more info`,
+        log: error });
+    });
 
   return newGroupUser;
 };

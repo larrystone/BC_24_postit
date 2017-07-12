@@ -27,7 +27,9 @@ module.exports.createUser = function (req, res) {
 
     res.status(200).send(loggedInUser);
   }).catch(function (error) {
-    return res.status(400).send(error);
+    return res.status(400).send({ title: 'Oops...',
+      message: 'Error Creating user. See log below for more info',
+      log: error });
   });
 
   return newUser;
@@ -36,7 +38,7 @@ module.exports.createUser = function (req, res) {
 // get a user from the users table
 module.exports.getUser = function (req, res) {
   var newUser = user.findOne({
-    attributes: ['id', 'username', 'email', 'phone', 'password'],
+    attributes: ['id', 'username', 'email', 'password'],
     where: {
       $or: [{ username: req.body.username.toLowerCase() }, { email: req.body.email.toLowerCase() }]
     }
@@ -83,6 +85,7 @@ module.exports.getAllUsers = function (req, res) {
 
 module.exports.logOut = function (req, res) {
   req.session.user = null;
-  res.status(200).send({ title: 'PostIt bids Goodbye...', message: 'Thanks for your time...' });
+  res.status(200).send({ title: 'PostIt bids Goodbye...',
+    message: 'Thanks for your time...' });
 };
 //# sourceMappingURL=users.js.map
