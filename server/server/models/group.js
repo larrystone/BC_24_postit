@@ -1,3 +1,11 @@
+/**
+ * @fileOverview Define group database model and associations
+ * 
+ * @exports group default
+ * @param  {obj} sequelize sequelize object
+ * @param  {obj} DataTypes DataTypes object
+ * @return {obj}  group object
+ */
 module.exports = (sequelize, DataTypes) => {
   const group = sequelize.define('group', {
     name: { type: DataTypes.STRING,
@@ -5,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       unique: true },
   }, {
     classMethods: {
+      // associations
       associate: (models) => {
         group.hasMany(models.message, {
           foreignKey: 'groupId',

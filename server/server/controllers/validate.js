@@ -1,11 +1,10 @@
 import models from '../models';
 
-const groupUser = models.group_user;
+const groupser = models.group_user;
 
-module.exports.isAdmin = (/* groupUser, */ userId, groupId) => {
-  let admin;
-  groupUser
-    .findOne({
+module.exports.userType = (groupUser, userId, groupId) => {
+  const vv = groupser
+    .findAll({
       attributes: ['admin'],
       where: {
         $and: [
@@ -13,38 +12,11 @@ module.exports.isAdmin = (/* groupUser, */ userId, groupId) => {
           { groupid: groupId }
         ]
       }
-    })
-    .then((result) => {
-      admin = result;
-    })
-    .catch((/* error */) => {
-      const result = false;
-      admin = result;
-    });
-
-  return admin;
-};
-
-module.exports.isMember = (userId, groupId) => {
-  let member;
-  groupUser
-    .findOne({
-      attributes: ['admin'],
-      where: {
-        $and: [
-          { userid: userId },
-          { groupid: groupId }
-        ]
-      }
-    })
-    .then((result) => {
-      if (result) {
-        member = true;
-      }
-    })
-    .catch((/* error */) => {
-      member = false;
-    });
-
-  return member;
+    }).then((value) => {
+      console.log(value.get());
+      return JSON.stringify(value);
+    }).catch( (error) => {
+      return {
+      message: 'Error Creating user. See log below for more info', 
+      log: error }});
 };

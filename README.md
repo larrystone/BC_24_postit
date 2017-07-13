@@ -3,14 +3,22 @@
 [![Build Status](https://www.travis-ci.org/larrystone/BC_24_postit.svg?branch=master)]
 (https://www.travis-ci.org/larrystone/BC_24_postit)
 
-# postIt
+# PostIt
 A message board web app with great features...
+
+# Features
+- Signup and Login
+- Create broadcast Group
+- Add users to broadcast Group
+- Post messages on broadcast groups
+- View messages on groups
 
 # Installation
 - run `npm install` to install dependencies
 
 # Testing
-- run `npm run start`then navigate to `localhost:3000` on POSTMAN
+- install POSTMAN app
+- run `npm start` then navigate to `localhost:3000` on POSTMAN
 
 # Author
 **Lawal Lanre E. (Larrystone)** -Aspiring Software Dev.

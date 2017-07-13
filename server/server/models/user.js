@@ -1,3 +1,11 @@
+/**
+ * @fileOverview Define user database model and associations
+ * 
+ * @exports user default
+ * @param  {obj} sequelize sequelize object
+ * @param  {obj} DataTypes DataTypes object
+ * @return {obj}  user object
+ */
 module.exports = (sequelize, DataTypes) => {
   const user = sequelize.define('user', {
     username: { type: DataTypes.STRING,
@@ -17,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     last_login: DataTypes.DATE
   }, {
     classMethods: {
+      // associations
       associate: (models) => {
         user.hasMany(models.message, {
           foreignKey: 'userId',

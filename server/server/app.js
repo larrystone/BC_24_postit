@@ -19,7 +19,7 @@ app.use(session({ secret: config.secret,
 //  Connect all our routes
 app.use('/', routes);
 
-// Turn on that server!
+// Turn on server!
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
 });

@@ -4,19 +4,26 @@ import validate from './validate';
 const message = models.message;
 
 /**
- * This ting foes thins
- * @param {*} req
- * @param {*} res
- * @returns {*} newMessage
+ * @exports createMessage
+ * @param  {obj} req request object
+ * @param  {obj} res result object
+ * @return {funct}  newMessage function
  */
 module.exports.createMessage = (req, res) => {
   const groupId = req.params.groupId;
   const userId = req.session.user.id;
 
-  if (validate.isMember(userId, groupId) === true || validate.isMember(userId, groupId) === false) {
+  if (validate.userType(userId, groupId) !== 'null') {
+    /**
+     * Creation of Message by user that belongs to group
+     *
+     * @param  {string} name username string
+     * @return {funct}   newGroup function
+     * @public
+     */
     const newMessage = message
       .create({
-        content: req.body.content,
+        content: req.body.content.trim(),
         userid: req.session.user.id,
         groupid: req.params.groupId,
         priority: req.body.priority,
@@ -34,8 +41,14 @@ module.exports.createMessage = (req, res) => {
 };
 
 
-// get all users on the users table
+/**
+ * @exports getGroupMessages
+ * @param  {obj} req request object
+ * @param  {obj} res result object
+ * @return {obj}  groupMessages object
+ */
 module.exports.getGroupMessages = (req, res) => {
+  // get all messages on group
   const groupMessages = message
     .findAll({
       attributes: ['id', 'userid', 'content', 'createdAt'],
