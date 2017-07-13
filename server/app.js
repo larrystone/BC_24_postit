@@ -1,7 +1,7 @@
-import { express } from 'express';
-import { logger } from 'morgan';
-import { bodyParser } from 'body-parser';
-import { session } from 'express-session';
+import express from 'express';
+import logger from 'morgan';
+import bodyParser from 'body-parser';
+import session from 'express-session';
 
 import routes from './routes';
 import configs from './config/config.json';
@@ -23,3 +23,5 @@ app.use('/', routes);
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
 });
+
+export default app;
