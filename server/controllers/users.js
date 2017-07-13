@@ -1,5 +1,5 @@
 import models from '../models';
-import auth from './authen';
+import * as auth from './authen';
 
 const user = models.user;
 
@@ -9,7 +9,7 @@ const user = models.user;
  * @param  {obj} res result object
  * @return {obj}  newUser object
  */
-module.exports.createUser = (req, res) => {
+export const createUser = (req, res) => {
   if (!req.session.user) {
     const newUser = user
       .create({
@@ -43,7 +43,7 @@ module.exports.createUser = (req, res) => {
  * @param  {obj} res result object
  * @return {obj}  newUser object
  */
-module.exports.getUser = (req, res) => {
+export const getUser = (req, res) => {
   if (!req.session.user) {
     const newUser = user
       .findOne({
@@ -88,7 +88,7 @@ module.exports.getUser = (req, res) => {
  * @param  {obj} res result object
  * @return {obj}  users object
  */
-module.exports.getAllUsers = (req, res) => {
+export const getAllUsers = (req, res) => {
   const users = user
     .findAll({
       attributes: ['id', 'username', 'email', 'phone']
@@ -113,7 +113,7 @@ module.exports.getAllUsers = (req, res) => {
  * @param  {obj} res result object
  * @return {obj}  undefined
  */
-module.exports.logOut = (req, res) => {
+export const logOut = (req, res) => {
   if (req.session.user) {
     const username = req.session.user.username;
     req.session.user = null;

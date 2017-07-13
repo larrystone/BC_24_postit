@@ -28,4 +28,4 @@ routes.post('*', (req, res) => {
  * @exports routes
  * @return {obj}  null
  */
-module.exports = routes;
+export default routes;

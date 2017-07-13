@@ -6,7 +6,7 @@
  * @param  {obj} DataTypes DataTypes object
  * @return {obj}  user object
  */
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
   const user = sequelize.define('user', {
     username: { type: DataTypes.STRING,
       allowNull: false,

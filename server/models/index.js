@@ -6,7 +6,7 @@
 import fs from 'fs';
 import path from 'path';
 import Sequelize from 'sequelize';
-import configs from './../../config/config.json';
+import configs from './../config/config.json';
 
 const env = process.env.NODE_ENV || 'development';
 
@@ -45,4 +45,4 @@ Object.keys(db).forEach((modelName) => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;
+export default db;

@@ -4,7 +4,7 @@
   "description": "A message board app",
   "main": "server/server/app.js",
   "scripts": {
-    "start": "nodemon --exec babel-node server/server/app.js",
+    "start": "nodemon --exec babel-node server/app.js",
     "build-task:scss-compile": "node-sass-chokidar --source-map true template/scss -o template/css",
     "build-task:autoprefixer": "postcss template/css/*.css --use autoprefixer -d template/css",
     "sass:build": "npm-run-all -p build-task:*",

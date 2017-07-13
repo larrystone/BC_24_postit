@@ -10,7 +10,7 @@ const groupUser = models.group_user;
  * @param  {obj} res result object
  * @return {funct}  newGroup function
  */
-module.exports.createGroup = (req, res) => {
+export const createGroup = (req, res) => {
 /**
  * Creation of Group by user
  *
@@ -52,7 +52,7 @@ might be the group already exists. See log below for more info`,
  * @param  {obj} res result object
  * @return {funct}  newGroup function
  */
-module.exports.addGroupUser = (req, res) => {
+export const addGroupUser = (req, res) => {
   const groupId = req.params.groupId;
   const adminId = req.session.user.id;
   const userId = req.body.userid;

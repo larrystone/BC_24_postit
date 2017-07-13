@@ -6,7 +6,7 @@
  * @param  {obj} DataTypes DataTypes object
  * @return {obj}  group object
  */
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
   const group = sequelize.define('group', {
     name: { type: DataTypes.STRING,
       allowNull: false,

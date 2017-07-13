@@ -1,37 +1,33 @@
-module.exports = {
+export default {
   up: (queryInterface, Sequelize) => {
-    const query = queryInterface.createTable('messages', {
+    const query = queryInterface.createTable('group_users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      content: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      priority: {
-        type: Sequelize.ENUM,
-        values: ['Normal', 'Urgent', 'Critical']
-      },
       userid: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         onDelete: 'CASCADE',
         references: {
           model: 'users',
-          key: 'id',
-          as: 'userId',
-        },
+          key: 'id'
+        }
       },
       groupid: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         onDelete: 'CASCADE',
         references: {
           model: 'groups',
-          key: 'id',
-          as: 'groupId',
-        },
+          key: 'id'
+        }
+      },
+      admin: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
       },
       createdAt: {
         allowNull: false,
@@ -45,8 +41,8 @@ module.exports = {
 
     return query;
   },
-  down: (queryInterface /* , Sequelize */) => {
-    const query = queryInterface.dropTable('messages');
+  down(queryInterface /* , Sequelize*/) {
+    const query = queryInterface.dropTable('group_users');
 
     return query;
   }
