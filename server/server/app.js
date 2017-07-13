@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(session({ secret: config.secret,
+app.use(session({ secret: process.env.SECRET,
   resave: true,
   saveUninitialized: true }));
 
