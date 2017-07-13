@@ -1,7 +1,5 @@
-import models from '../models';
-import auth from './authen';
-
-const user = models.user;
+import { user } from '../models';
+import { generateHash, verifyHash } from './authen';
 
 /**
  * @exports createUser
@@ -9,13 +7,13 @@ const user = models.user;
  * @param  {obj} res result object
  * @return {obj}  newUser object
  */
-module.exports.createUser = (req, res) => {
+const createUser = (req, res) => {
   if (!req.session.user) {
     const newUser = user
       .create({
         username: req.body.username.toLowerCase().trim(),
         email: req.body.email.toLowerCase().trim(),
-        password: auth.generateHash(req.body.password),
+        password: generateHash(req.body.password),
         phone: req.body.phone
       })
       .then((result) => {
@@ -43,7 +41,7 @@ module.exports.createUser = (req, res) => {
  * @param  {obj} res result object
  * @return {obj}  newUser object
  */
-module.exports.getUser = (req, res) => {
+const getUser = (req, res) => {
   if (!req.session.user) {
     const newUser = user
       .findOne({
@@ -62,7 +60,7 @@ module.exports.getUser = (req, res) => {
           });
         }
 
-        if (auth.verifyHash(req.body.password, result.password)) {
+        if (verifyHash(req.body.password, result.password)) {
         // create session
           req.session.user = result;
           return res.status(200).send(
@@ -88,7 +86,7 @@ module.exports.getUser = (req, res) => {
  * @param  {obj} res result object
  * @return {obj}  users object
  */
-module.exports.getAllUsers = (req, res) => {
+const getAllUsers = (req, res) => {
   const users = user
     .findAll({
       attributes: ['id', 'username', 'email', 'phone']
@@ -113,7 +111,7 @@ module.exports.getAllUsers = (req, res) => {
  * @param  {obj} res result object
  * @return {obj}  undefined
  */
-module.exports.logOut = (req, res) => {
+const logOut = (req, res) => {
   if (req.session.user) {
     const username = req.session.user.username;
     req.session.user = null;
@@ -123,3 +121,5 @@ module.exports.logOut = (req, res) => {
   res.status(200).send({ title: 'Hey!',
     message: 'Sorry, but you were not logged in the first place!' });
 };
+
+export { createUser, getUser, getAllUsers, logOut };

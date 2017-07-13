@@ -6,7 +6,7 @@
  * @param  {obj} DataTypes DataTypes object
  * @return {obj}  groupUsers object
  */
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
   const groupUsers = sequelize.define('group_user', {
     userid: DataTypes.INTEGER,
     groupid: DataTypes.INTEGER,
@@ -25,3 +25,4 @@ module.exports = (sequelize, DataTypes) => {
   });
   return groupUsers;
 };
+

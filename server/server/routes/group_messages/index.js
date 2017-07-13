@@ -1,13 +1,13 @@
 import express from 'express';
-
 import controller from '../../controllers';
 
-const group = express.Router();
+const groupAndMessage = express.Router();
 
 const groupController = controller.groups;
 const messageController = controller.messages;
 
-group.use('*', (req, res, next) => {
+// define authentication middleware for route protection
+groupAndMessage.use('*', (req, res, next) => {
   // check for authentication here
   if (!req.session.user) {
     res.status(401).send({ title: 'Oops..',
@@ -17,10 +17,16 @@ group.use('*', (req, res, next) => {
   next();
 });
 
-group.post('/', groupController.createGroup);
-group.post('/:groupId/user', groupController.addGroupUser);
+// define route controllers for creating group and adding user to group
+groupAndMessage.post('/', groupController.createGroup);
+groupAndMessage.post('/:groupId/user', groupController.addGroupUser);
 
-group.post('/:groupId/message', messageController.createMessage);
-group.get('/:groupId/messages', messageController.getGroupMessages);
+// define route controllers for creating message and viewing messages on group
+groupAndMessage.post('/:groupId/message', messageController.createMessage);
+groupAndMessage.get('/:groupId/messages', messageController.getGroupMessages);
 
-module.exports = group;
+/**
+ * @exports groupAndMessage
+ * @return {obj}  null
+ */
+module.exports = groupAndMessage;

@@ -1,10 +1,10 @@
-import express from 'express';
-import logger from 'morgan';
-import bodyParser from 'body-parser';
-import session from 'express-session';
+import { express } from 'express';
+import { logger } from 'morgan';
+import { bodyParser } from 'body-parser';
+import { session } from 'express-session';
 
-import config from './../config/config.json';
 import routes from './routes';
+import configs from './config/config.json';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(session({ secret: config.secret,
+app.use(session({ secret: configs.secret,
   resave: true,
   saveUninitialized: true }));
 

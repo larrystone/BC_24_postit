@@ -1,14 +1,12 @@
-import models from '../models';
+import { message, groupUser } from '../models';
 
-const message = models.message;
-const groupUser = models.group_user;
 /**
  * @exports createMessage
  * @param  {obj} req request object
  * @param  {obj} res result object
  * @return {funct}  newMessage function
  */
-module.exports.createMessage = (req, res) => {
+const createMessage = (req, res) => {
   const groupId = req.params.groupId;
   const userId = req.session.user.id;
 
@@ -60,7 +58,7 @@ module.exports.createMessage = (req, res) => {
  * @param  {obj} res result object
  * @return {obj}  groupMessages object
  */
-module.exports.getGroupMessages = (req, res) => {
+const getGroupMessages = (req, res) => {
   const groupId = req.params.groupId;
   const userId = req.session.user.id;
 
@@ -102,3 +100,5 @@ module.exports.getGroupMessages = (req, res) => {
       the neccesary permission to post messages to this group` });
     });
 };
+
+export { createMessage, getGroupMessages };

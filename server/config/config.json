@@ -1,11 +1,6 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "cyberstone",
-    "database": "postit-dev",
-    "host": "127.0.0.1",
-    "port": 5432,
-    "dialect": "postgres"
+    "use_env_variable": "DATABASE_URL"
   },
   "test": {
     "username": "postgres",
@@ -16,11 +11,8 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "postgres",
-    "password": "cyberstone",
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "use_env_variable": "DATABASE_URL"
   },
-  "secret": "!evit_erces"
+  "secret": "!evit_erces",
+  "url_local" : "http://localhost:3000"
 }

@@ -6,7 +6,7 @@
  * @param  {obj} DataTypes DataTypes object
  * @return {obj}  message object
  */
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
   const message = sequelize.define('message', {
     content: { type: DataTypes.STRING,
       allowNull: false },
