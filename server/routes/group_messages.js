@@ -1,10 +1,12 @@
 import express from 'express';
-import controller from '../../controllers';
+// import { groups, messages } from '../../controllers';
+import groupController from '../controllers/groups';
+import messageController from '../controllers/messages';
 
 const groupAndMessage = express.Router();
 
-const groupController = controller.groups;
-const messageController = controller.messages;
+// const groupController = controller.groups;
+// const messageController = controller.messages;
 
 // define authentication middleware for route protection
 groupAndMessage.use('*', (req, res, next) => {
@@ -29,4 +31,5 @@ groupAndMessage.get('/:groupId/messages', messageController.getGroupMessages);
  * @exports groupAndMessage
  * @return {obj}  null
  */
-module.exports = groupAndMessage;
+
+export default groupAndMessage;

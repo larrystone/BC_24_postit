@@ -1,182 +1,39 @@
-import supertest from 'supertest';
-import configs from './../server/config/config.json';
+process.env.NODE_ENV = 'test';
 
-// This agent refers to PORT where program is runninng.
-const server = supertest.agent(configs.url_local);
+import chai from 'chai';
+import chaiHttp from 'chai-http';
 
-// declare routes variable
-// const signInRoute = '/api/user/signin';
-const signOutRoute = '/api/user/signout';
-// const signUpRoute = '/api/user/signup';
-// const groupRoute = '/api/group';
+import server from './../server/app';
 
-// UNIT test begin
-describe('Test Response Codes for routes', () => {
-  // test on hompage
-  it(`should return 200 for '${configs.url_local}/' GET request`, () => {
-    // calling home page api
-    server
-      .get('/')
-      .set('Accept', 'application/json')
-      .expect(200);
-  });
+// let mongoose = require("mongoose");
+// let Book = require('../app/models/book');
 
-  // test on log out api
-  it(`should return 200 for '${configs.url_local}${signOutRoute}' GET request`, () => {
-    // calling log out api
-    server
-      .get('/')
-      .set('Accept', 'application/json')
-      .expect(200);
-  });
+// Require the dev-dependencies
+// let server = require('../server');
 
-  it(`should return 404 for '${configs.url_local}/api/user/' GET request`, () => {
-    // calling home page api
-    server
-      .get('/api/user/')
-      .set('Accept', 'application/json')
-      .expect(404);
-  });
+let should = chai.should();
 
-  it(`should return 404 for '${configs.url_local}/api/' GET request`, () => {
-    // calling home page api
-    server
-      .get('/api/')
-      .set('Accept', 'application/json')
-      .expect(404);
-  });
-
-  it(`should return 404 for '${configs.url_local}/login/' GET request`, () => {
-    // calling home page api
-    server
-      .get('/login/')
-      .set('Accept', 'application/json')
-      .expect(404);
-  });
-
-  it(`should return 404 for '${configs.url_local}/api/' POST request`, () => {
-    // calling home page api
-    server
-      .post('/api/')
-      .set('Accept', 'application/json')
-      .expect(404);
-  });
-
-  it(`should return 404 for '${configs.url_local}/api/user/login' POST request`, () => {
-    // calling home page api
-    server
-      .post('/api/user/login')
-      .set('Accept', 'application/json')
-      .expect(404);
-  });
-
-  it(`should return 404 for '${configs.url_local}/api/user/users' POST request`, () => {
-    // calling home page api
-    server
-      .post('/api/user/users')
-      .set('Accept', 'application/json')
-      .expect(404);
-  });
-
-  it(`should return 200 for '${configs.url_local}/api/user/all' GET request`, () => {
-    // calling home page api
-    server
-      .post('/api/user/all')
-      .set('Accept', 'application/json')
-      .expect(200);
-  });
-
-  it(`should return 200 for '${configs.url_local}/api/user/signin' POST request`, () => {
-    // calling home page api
-    server
-      .post('/api/user/?username=larrystone')
-      .set('Accept', 'application/json')
-      .expect(404);
+chai.use(chaiHttp);
+// Our parent block
+describe('Books', () => {
+  // beforeEach((done) => { //Before each test we empty the database
+  //     Book.remove({}, (err) => { 
+  //        done();         
+  //     });     
+  // });
+/*
+  * Test the /GET route
+  */
+  describe('/GET requests', () => {
+    it('it should GET all the books', (done) => {
+      chai.request(server)
+        .get('/')
+        .end((err, res) => {
+          res.should.have.status(201);
+        //   res.body.should.be.a('array');
+        //   res.body.length.should.be.eql(0);
+          done();
+        });
+    });
   });
 });
-
-
-// TODO test for messages returned
-// describe('Test Response Messages for routes', () => {
-//   // test on hompage
-//   it(`should return 200 for '${configs.url_local}/' GET request`, () => {
-//     // calling home page api
-//     server
-//       .get('/')
-//       .set('Accept', 'application/json')
-//       .expect(200);
-//   });
-
-//   // test on log out api
-//   it(`should return 200 for '${configs.url_local}${signOutRoute}' GET request`, () => {
-//     // calling log out api
-//     server
-//       .get('/')
-//       .set('Accept', 'application/json')
-//       .expect(200);
-//   });
-
-//   it(`should return 404 for '${configs.url_local}/api/user/' GET request`, () => {
-//     // calling home page api
-//     server
-//       .get('/api/user/')
-//       .set('Accept', 'application/json')
-//       .expect(404);
-//   });
-
-//   it(`should return 404 for '${configs.url_local}/api/' GET request`, () => {
-//     // calling home page api
-//     server
-//       .get('/api/')
-//       .set('Accept', 'application/json')
-//       .expect(404);
-//   });
-
-//   it(`should return 404 for '${configs.url_local}/login/' GET request`, () => {
-//     // calling home page api
-//     server
-//       .get('/login/')
-//       .set('Accept', 'application/json')
-//       .expect(404);
-//   });
-
-//   it(`should return 404 for '${configs.url_local}/api/' POST request`, () => {
-//     // calling home page api
-//     server
-//       .post('/api/')
-//       .set('Accept', 'application/json')
-//       .expect(404);
-//   });
-
-//   it(`should return 404 for '${configs.url_local}/api/user/login' POST request`, () => {
-//     // calling home page api
-//     server
-//       .post('/api/user/login')
-//       .set('Accept', 'application/json')
-//       .expect(404);
-//   });
-
-//   it(`should return 404 for '${configs.url_local}/api/user/users' POST request`, () => {
-//     // calling home page api
-//     server
-//       .post('/api/user/users')
-//       .set('Accept', 'application/json')
-//       .expect(404);
-//   });
-
-//   it(`should return 200 for '${configs.url_local}/api/user/all' GET request`, () => {
-//     // calling home page api
-//     server
-//       .post('/api/user/all')
-//       .set('Accept', 'application/json')
-//       .expect(200);
-//   });
-
-//   it(`should return 200 for '${configs.url_local}/api/user/signin' POST request`, () => {
-//     // calling home page api
-//     server
-//       .post('/api/user/?username=larrystone')
-//       .set('Accept', 'application/json')
-//       .expect(404);
-//   });
-// });
