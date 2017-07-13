@@ -118,7 +118,7 @@ module.exports.logOut = (req, res) => {
     const username = req.session.user.username;
     req.session.user = null;
     res.status(200).send({ title: 'PostIt bids Goodbye...',
-      message: `Thanks for your time ${username}...` });
+      message: `Thanks for your time ${username.toUpperCase()}...` });
   }
   res.status(200).send({ title: 'Hey!',
     message: 'Sorry, but you were not logged in the first place!' });
