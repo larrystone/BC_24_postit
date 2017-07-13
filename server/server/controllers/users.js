@@ -120,6 +120,6 @@ module.exports.logOut = (req, res) => {
     res.status(200).send({ title: 'PostIt bids Goodbye...',
       message: `Thanks for your time ${username}...` });
   }
-  res.status(201).send({ title: 'Hey!',
+  res.status(200).send({ title: 'Hey!',
     message: 'Sorry, but you were not logged in the first place!' });
 };

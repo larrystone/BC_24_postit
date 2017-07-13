@@ -1,6 +1,5 @@
 
 import models from '../models';
-import validate from './validate';
 
 const group = models.group;
 const groupUser = models.group_user;
@@ -55,39 +54,57 @@ might be the group already exists. See log below for more info`,
  */
 module.exports.addGroupUser = (req, res) => {
   const groupId = req.params.groupId;
+  const adminId = req.session.user.id;
   const userId = req.body.userid;
-  const st = validate.userType(groupUser, userId, groupId);
 
-  // validates user as group admin before allowing addition of users
-  if (validate.userType(groupUser, userId, groupId) === 'admin') {
-    /**
-     * Creation of Group by user
-     *
-     * @param  {int} groupid groupId int
-     * @param  {int} userid userId int
-     * @param  {boolean} admin isAdmin boolean
-     * @return {obj}  newUser newUser object
-     * @public
-     */
-    const newGroupUser = groupUser
-      .create({
-        groupid: groupId,
-        userid: userId,
-      })
-      .then(result => res.status(201).send(result))
-      .catch((error) => {
-        // handle error adding user to group
-        res.status(400).send({ title: 'Oops...',
-          message: `Error adding User to group,
+  // check if the guy tryin to add user is admin
+  groupUser
+    .findOne({
+      attributes: ['admin'],
+      where: {
+        $and: [
+          { userid: adminId },
+          { groupid: groupId }
+        ]
+      }
+    }).then((value) => {
+      if (value.admin === true) {
+        // check if the guy being added is not already in the group
+        groupUser
+          .findOne({
+            attributes: ['admin'],
+            where: {
+              $and: [
+                { userid: userId },
+                { groupid: groupId }
+              ]
+            }
+          }).then((result) => {
+            if (!result) {
+              // add guy to group
+              const newGroupUser = groupUser
+                .create({
+                  groupid: groupId,
+                  userid: userId,
+                })
+                .then(data => res.status(201).send(data))
+                .catch((error) => {
+                  // handle error adding user to group
+                  res.status(400).send({ title: 'Oops...',
+                    message: `Error adding User to group,
 might be the user/group does not exist!. See log below for more info`,
-          log: error });
-      });
+                    log: error });
+                });
 
-    return newGroupUser;
-  } else {
-    res.status(201).send({ title: 'Oops...',
-      message: `${st} You do not seem to have 
+              return newGroupUser;
+            }
+            res.status(200).send({ title: 'No Need...',
+              message: 'This user is already a member of this group' });
+          });
+      } else {
+        res.status(401).send({ title: 'Oops...',
+          message: `You do not seem to have 
       the neccesary permission to add users to this group` });
-  }
-  // user is not group admin
+      }
+    });
 };
