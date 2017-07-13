@@ -13,5 +13,6 @@
   "production": {
     "use_env_variable": "DATABASE_URL"
   },
-  "secret": "!evit_erces"
+  "secret": "!evit_erces",
+  "url_local" : "http://localhost:3000"
 }
