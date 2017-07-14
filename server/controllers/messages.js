@@ -23,6 +23,9 @@ module.exports.createMessage = (req, res) => {
       }
     }).then((value) => {
       if (value) {
+        if (!req.body.content) {
+          throw new Error();
+        }
         // create message on the group then
         /**
          * Creation of Message by user that belongs to group
@@ -33,7 +36,7 @@ module.exports.createMessage = (req, res) => {
          */
         const newMessage = message
           .create({
-            content: req.body.content ? req.body.content.trim() : '',
+            content: req.body.content.trim(),
             userid: req.session.user.id,
             groupid: req.params.groupId,
             priority: req.body.priority,
