@@ -33,7 +33,7 @@ module.exports.createMessage = (req, res) => {
          */
         const newMessage = message
           .create({
-            content: req.body ? req.body.content.trim() : '',
+            content: req.body.content ? req.body.content.trim() : '',
             userid: req.session.user.id,
             groupid: req.params.groupId,
             priority: req.body.priority,
