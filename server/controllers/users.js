@@ -25,9 +25,9 @@ export const signUp = (req, res) => {
 
       req.session.user = result;
 
-      res.status(200).send(loggedInUser);
+      res.status(201).send(loggedInUser);
     })
-    .catch(() => res.status(400).send({ title: 'Oops...',
+    .catch(() => res.status(401).send({ title: 'Oops...',
       message: 'Error Creating user' }));
 
   return newUser;
@@ -35,7 +35,7 @@ export const signUp = (req, res) => {
 
 
 /**
- * @exports getUser
+ * @exports signIn
  * @param  {obj} req request object
  * @param  {obj} res result object
  * @return {obj}  newUser object
@@ -63,14 +63,14 @@ export const signIn = (req, res) => {
       if (auth.verifyHash(req.body.password, result.password)) {
         // create session
         req.session.user = result;
-        return res.status(200).send(
+        return res.status(201).send(
           { id: result.id,
             username: result.username,
             email: result.email,
             phone: result.phone });
       }
     })
-    .catch(error => res.status(400).send(error));
+    .catch(error => res.status(401).send(error));
 
   return newUser;
 };
@@ -96,7 +96,7 @@ export const getAllUsers = (req, res) => {
 
       return res.status(201).send(result);
     })
-    .catch(error => res.status(400).send(error));
+    .catch(error => res.status(401).send(error));
 
   return users;
 };

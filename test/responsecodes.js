@@ -6,14 +6,6 @@ import server from './../server/app';
 const should = chai.should();
 
 chai.use(chaiHttp);
-// Our parent block
-// describe('User', () => { 
-//     beforeEach((done) => { 
-//         User.destroy({
-//             where : { },
-//             truncate : true
-//         });
-//     });
 
 describe('/GET requests', () => {
   it('it should GET the homepage', (done) => {

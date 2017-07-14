@@ -1,32 +1,64 @@
-// // process.env.NODE_ENV = 'test';
+// process.env.NODE_ENV = 'test';
 
-// import chai from 'chai';
-// import chaiHttp from 'chai-http';
+import chai from 'chai';
+import chaiHttp from 'chai-http';
 
-// import server from './../server/app';
-// // import User from '../app/models/book';
+import server from './../server/app';
+import models from './../server/models';
 
-// const should = chai.should();
+// import User from '../app/models/book';
 
-// chai.use(chaiHttp);
-// Our parent block
-// describe('User', () => { 
-//     beforeEach((done) => { 
-//         User.destroy({
-//             where : { },
-//             truncate : true
-//         });
-//     });
+const should = chai.should();
+const expect = chai.expect();
+const user = models.user;
 
-// describe('/GET requests', () => {
-//   it('it should GET all the users', (done) => {
-//     chai.request(server)
-//       .get('/')
-//       .end((err, res) => {
-//         res.should.have.status(201);
-//         res.body.should.be.a('array');
-//         res.body.length.should.be.eql(0);
-//         done();
-//       });
-//   });
-// });
+chai.use(chaiHttp);
+
+// delete all records before running tests
+describe('User', () => {
+  beforeEach((done) => {
+    user.destroy({
+      where: { },
+      truncate: true
+    }).then( () => {
+        done();
+    });
+  });
+
+  describe('/POST User Sign Up Test', () => {
+    it('should create a new user and return the user', (done) => {
+      chai.request(server)
+        .post('/api/user/signup')
+        .set('Accept', 'application/json')
+        .send({
+          username: 'maxwell',
+          email: 'maxwell@gmaiil.com',
+          password: 'maxwell',
+        })
+      //   .expect('Content-Type', '/json/')
+        .end((err, res) => {
+          res.should.have.status(401);
+          expect(res.body).to.have.all.deep.keys('userId', 'username', 'email');
+          done();
+        });
+    });
+
+    it('should create a new user and return the user', (done) => {
+      chai.request(server)
+        .post('/api/user/signup')
+        .set('Accept', 'application/json')
+        .send({
+          username: 'temitope',
+          email: 'temitope@yahoo.com',
+          password: 'westerdae',
+        })
+      //      .expect('Content-Type', '/json/')
+        .end((err, res) => {
+          res.should.have.status(201);
+          expect(res.body).to.have.all.deep.keys('userId', 'username', 'email');
+          done();
+        });
+    });
+  });
+});
+

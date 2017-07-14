@@ -10,7 +10,7 @@
     "sass:build": "npm-run-all -p build-task:*",
     "sass:watch": "chokidar 'template/scss/**/*.scss' -c 'npm run sass:build'",
     "dev": "npm-run-all -p sass:*",
-    "test": "./node_modules/.bin/mocha --timeout 50000 --compilers js:babel-core/register test/"
+    "test": "./node_modules/.bin/mocha --timeout 500000 --compilers js:babel-core/register test/"
   },
   "author": "Lawal Lanre Emmanuel",
   "license": "ISC",
@@ -21,6 +21,7 @@
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
     "chai-http": "^3.0.0",
+    "expect": "^1.20.2",
     "express": "^4.15.3",
     "express-session": "^1.15.3",
     "jsonwebtoken": "^7.4.1",
