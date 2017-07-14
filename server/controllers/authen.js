@@ -12,6 +12,7 @@ export const verifyHash = (password, hash) => {
   return status;
 };
 
+export { generateHash, verifyHash };
 
 // import jwt from 'jsonwebtoken';
 

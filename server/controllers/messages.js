@@ -2,6 +2,7 @@ import models from '../models';
 
 const message = models.message;
 const groupUser = models.group_user;
+
 /**
  * @exports createMessage
  * @param  {obj} req request object
