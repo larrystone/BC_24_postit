@@ -11,7 +11,7 @@ routes.use('/api/group', groupAndMessages);
 
 // define routes for homepage
 routes.get('/', (req, res) => {
-  res.status(201).json({ title: 'PostIt!...', message: 'Welcome Buddy...' });
+  res.status(200).json({ title: 'PostIt!...', message: 'Welcome Buddy...' });
 });
 
 // define catch all routes for http get requests

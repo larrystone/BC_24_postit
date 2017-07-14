@@ -1,5 +1,7 @@
-import { user } from '../models';
-import { generateHash, verifyHash } from './authen';
+import models from '../models';
+import * as auth from './authen';
+
+const user = models.user;
 
 /**
  * @exports createUser
@@ -7,115 +9,111 @@ import { generateHash, verifyHash } from './authen';
  * @param  {obj} res result object
  * @return {obj}  newUser object
  */
-export default {
-  createUser: (req, res) => {
-    const newUser = user
-      .create({
-        username: req.body.username.toLowerCase().trim(),
-        email: req.body.email.toLowerCase().trim(),
-        password: generateHash(req.body.password),
-        phone: req.body.phone
-      })
-      .then((result) => {
-        const loggedInUser =
+export const signUp = (req, res) => {
+  const username = req.body.username || '';
+  const email = req.body.email || '';
+  const newUser = user
+    .create({
+      username: username.toLowerCase().replace(' ', ''),
+      email: email.toLowerCase().trim().replace(' ', ''),
+      password: auth.generateHash(req.body.password),
+      phone: req.body.phone
+    })
+    .then((result) => {
+      const loggedInUser =
         { userId: result.id, username: result.username, email: result.email };
 
-        req.session.user = result;
+      req.session.user = result;
 
-        res.status(200).send(loggedInUser);
-      })
-      .catch(error => res.status(400).send({ title: 'Oops...',
-        message: 'Error Creating user. See log below for more info'
-      }));
+      res.status(200).send(loggedInUser);
+    })
+    .catch(() => res.status(400).send({ title: 'Oops...',
+      message: 'Error Creating user' }));
 
-    return newUser;
-  },
+  return newUser;
+};
 
-  /**
+
+/**
  * @exports getUser
  * @param  {obj} req request object
  * @param  {obj} res result object
  * @return {obj}  newUser object
  */
-  getUser: (req, res) => {
-    if (!req.session.user) {
-      const newUser = user
-        .findOne({
-          attributes: ['id', 'username', 'email', 'password'],
-          where: {
-            $or: [
-              { username: req.body.username.toLowerCase().trim() },
-              { email: req.body.email.toLowerCase().trim() }
-            ]
-          }
-        })
-        .then((result) => {
-          if (!result) {
-            return res.status(404).send({
-              message: 'Username or email does not exist!',
-            });
-          }
+export const signIn = (req, res) => {
+  const username = req.body.username || '';
+  const email = req.body.email || '';
+  const newUser = user
+    .findOne({
+      attributes: ['id', 'username', 'email', 'password'],
+      where: {
+        $or: [
+          { username: username.toLowerCase().trim() },
+          { email: email.toLowerCase().trim() }
+        ]
+      }
+    })
+    .then((result) => {
+      if (!result) {
+        return res.status(404).send({
+          message: 'Username or email does not exist!',
+        });
+      }
 
-          if (verifyHash(req.body.password, result.password)) {
-            // create session
-            req.session.user = result;
-            return res.status(200).send(
-              { id: result.id,
-                username: result.username,
-                email: result.email,
-                phone: result.phone });
-          }
-        })
-        .catch(error => res.status(400).send(error));
+      if (auth.verifyHash(req.body.password, result.password)) {
+        // create session
+        req.session.user = result;
+        return res.status(200).send(
+          { id: result.id,
+            username: result.username,
+            email: result.email,
+            phone: result.phone });
+      }
+    })
+    .catch(error => res.status(400).send(error));
 
-      return newUser;
-    }
-
-    res.status(201).send({ title: 'Someone (perhaps you) is already Logged In!',
-      message: 'Please log out current user before logging in as a new user' });
-  },
+  return newUser;
+};
 
 
-  /**
+/**
  * @exports getAllUsers
  * @param  {obj} req request object
  * @param  {obj} res result object
  * @return {obj}  users object
  */
-  getAllUsers: (req, res) => {
-    const users = user
-      .findAll({
-        attributes: ['id', 'username', 'email', 'phone']
-      })
-      .then((result) => {
-        if (!result) {
-          return res.status(404).send({
-            message: 'No User Found',
-          });
-        }
+export const getAllUsers = (req, res) => {
+  const users = user
+    .findAll({
+      attributes: ['id', 'username', 'email', 'phone']
+    })
+    .then((result) => {
+      if (!result) {
+        return res.status(404).send({
+          message: 'No User Found',
+        });
+      }
 
-        return res.status(200).send(result);
-      })
-      .catch(error => res.status(400).send(error));
+      return res.status(200).send(result);
+    })
+    .catch(error => res.status(400).send(error));
 
-    return users;
-  },
+  return users;
+};
 
-  /**
+/**
  * @exports logOut
  * @param  {obj} req request object
  * @param  {obj} res result object
  * @return {obj}  undefined
  */
-  logOut: (req, res) => {
-    if (req.session.user) {
-      const username = req.session.user.username;
-      req.session.user = null;
-      res.status(200).send({ title: 'PostIt bids Goodbye...',
-        message: `Thanks for your time ${username.toUpperCase()}...` });
-    }
-    res.status(200).send({ title: 'Hey!',
-      message: 'Sorry, but you were not logged in the first place!' });
+export const signOut = (req, res) => {
+  if (req.session.user) {
+    const username = req.session.user.username;
+    req.session.user = null;
+    res.status(200).send({ title: 'PostIt bids Goodbye...',
+      message: `Thanks for your time ${username.toUpperCase()}...` });
   }
+  res.status(200).send({ title: 'Hey!',
+    message: 'Sorry, but you are not even logged in!' });
 };
-

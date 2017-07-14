@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   up: (queryInterface, Sequelize) => {
     const query = queryInterface.createTable('group_users', {
       id: {

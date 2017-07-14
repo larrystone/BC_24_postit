@@ -1,19 +1,18 @@
 import bcrypt from 'bcrypt';
 
-const generateHash = (password) => {
+export const generateHash = (password) => {
   const salt = bcrypt.genSaltSync(10);
   const hash = bcrypt.hashSync(password, salt);
 
   return hash;
 };
 
-const verifyHash = (password, hash) => {
+export const verifyHash = (password, hash) => {
   const status = bcrypt.compareSync(password, hash);
   return status;
 };
 
 export { generateHash, verifyHash };
-
 
 // import jwt from 'jsonwebtoken';
 

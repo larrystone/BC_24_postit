@@ -12,8 +12,6 @@ import messages from './messages';
  * @exports groups
  * @exports groups
  */
-export {
-  users,
-  groups,
-  messages,
+module.exports = {
+  users, groups, messages,
 };
