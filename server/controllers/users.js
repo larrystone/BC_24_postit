@@ -94,7 +94,7 @@ export const getAllUsers = (req, res) => {
         });
       }
 
-      return res.status(200).send(result);
+      return res.status(201).send(result);
     })
     .catch(error => res.status(400).send(error));
 
@@ -111,9 +111,9 @@ export const signOut = (req, res) => {
   if (req.session.user) {
     const username = req.session.user.username;
     req.session.user = null;
-    res.status(200).send({ title: 'PostIt bids Goodbye...',
+    res.status(201).send({ title: 'PostIt bids Goodbye...',
       message: `Thanks for your time ${username.toUpperCase()}...` });
   }
-  res.status(200).send({ title: 'Hey!',
+  res.status(201).send({ title: 'Hey!',
     message: 'Sorry, but you are not even logged in!' });
 };
