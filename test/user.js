@@ -21,7 +21,7 @@ chai.use(chaiHttp);
 describe('/GET requests', () => {
   it('it should GET all the users', (done) => {
     chai.request(server)
-      .post('/')
+      .get('/')
       .end((err, res) => {
         res.should.have.status(201);
         //   res.body.should.be.a('array');

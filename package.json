@@ -2,7 +2,7 @@
   "name": "postit",
   "version": "1.0.0",
   "description": "A message board app",
-  "main": "server/server/app.js",
+  "main": "/server/app.js",
   "scripts": {
     "start": "nodemon --exec babel-node server/app.js",
     "build-task:scss-compile": "node-sass-chokidar --source-map true template/scss -o template/css",
