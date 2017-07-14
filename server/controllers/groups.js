@@ -38,10 +38,8 @@ export const createGroup = (req, res) => {
       });
       res.status(201).send(result);
     })
-    .catch(error => res.status(400).send({ title: 'Oops...',
-      message: `Error Creating group, 
-might be the group already exists. See log below for more info`,
-      log: error }));
+    .catch(() => res.status(400).send({ title: 'Error Creating group',
+      message: 'Might be the group already exists'}));
 
   return newGroup;
 };
@@ -72,7 +70,6 @@ export const addGroupUser = (req, res) => {
         // check if the guy being added is not already in the group
         groupUser
           .findOne({
-            attributes: ['admin'],
             where: {
               $and: [
                 { userid: userId },
@@ -88,12 +85,10 @@ export const addGroupUser = (req, res) => {
                   userid: userId,
                 })
                 .then(data => res.status(201).send(data))
-                .catch((error) => {
+                .catch(() => {
                   // handle error adding user to group
-                  res.status(400).send({ title: 'Oops...',
-                    message: `Error adding User to group,
-might be the user/group does not exist!. See log below for more info`,
-                    log: error });
+                  res.status(400).send({ title: 'Error adding User to group',
+                    message: 'Might be the user/group does not exist!' });
                 });
 
               return newGroupUser;
@@ -103,8 +98,8 @@ might be the user/group does not exist!. See log below for more info`,
           });
       } else {
         res.status(401).send({ title: 'Oops...',
-          message: `You do not seem to have 
-      the neccesary permission to add users to this group` });
+          message: 'You do not seem to have' +
+      'the neccesary permission to add users to this group' });
       }
     });
 };

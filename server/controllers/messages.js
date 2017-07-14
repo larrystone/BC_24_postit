@@ -15,7 +15,6 @@ module.exports.createMessage = (req, res) => {
   // check if the guy trying to post is a member
   groupUser
     .findOne({
-      attributes: ['admin'],
       where: {
         $and: [
           { userid: userId },
@@ -34,7 +33,7 @@ module.exports.createMessage = (req, res) => {
          */
         const newMessage = message
           .create({
-            content: req.body.content.trim(),
+            content: req.body ? req.body.content.trim() : '',
             userid: req.session.user.id,
             groupid: req.params.groupId,
             priority: req.body.priority,
@@ -67,7 +66,6 @@ module.exports.getGroupMessages = (req, res) => {
   // check if the guy trying to read posts is a member
   groupUser
     .findOne({
-      attributes: ['admin'],
       where: {
         $and: [
           { userid: userId },

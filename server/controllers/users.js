@@ -10,30 +10,27 @@ const user = models.user;
  * @return {obj}  newUser object
  */
 export const createUser = (req, res) => {
-  if (!req.session.user) {
-    const newUser = user
-      .create({
-        username: req.body.username.toLowerCase().trim(),
-        email: req.body.email.toLowerCase().trim(),
-        password: auth.generateHash(req.body.password),
-        phone: req.body.phone
-      })
-      .then((result) => {
-        const loggedInUser =
+  const username = req.body.username || '';
+  const email = req.body.email || '';
+  const newUser = user
+    .create({
+      username: username.toLowerCase().replace(' ', ''),
+      email: email.toLowerCase().trim().replace(' ', ''),
+      password: auth.generateHash(req.body.password),
+      phone: req.body.phone
+    })
+    .then((result) => {
+      const loggedInUser =
         { userId: result.id, username: result.username, email: result.email };
 
-        req.session.user = result;
+      req.session.user = result;
 
-        res.status(200).send(loggedInUser);
-      })
-      .catch(error => res.status(400).send({ title: 'Oops...',
-        message: 'Error Creating user. See log below for more info',
-        log: error }));
+      res.status(200).send(loggedInUser);
+    })
+    .catch(() => res.status(400).send({ title: 'Oops...',
+      message: 'Error Creating user' }));
 
-    return newUser;
-  }
-  res.status(201).send({ title: 'Someone (perhaps you) is already Logged In!',
-    message: 'Please log out current user before creating an account!' });
+  return newUser;
 };
 
 
@@ -76,9 +73,6 @@ export const getUser = (req, res) => {
 
     return newUser;
   }
-
-  res.status(201).send({ title: 'Someone (perhaps you) is already Logged In!',
-    message: 'Please log out current user before logging in as a new user' });
 };
 
 
@@ -121,5 +115,5 @@ export const logOut = (req, res) => {
       message: `Thanks for your time ${username.toUpperCase()}...` });
   }
   res.status(200).send({ title: 'Hey!',
-    message: 'Sorry, but you were not logged in the first place!' });
+    message: 'Sorry, but you are not even logged in!' });
 };
